@@ -1,0 +1,15 @@
+-cp src
+-cp test
+-lib coconut.vdom
+-lib cix
+-main Main
+-dce full
+-D analyzer-optimize
+-D js_es=6
+-js bin/main.js
+
+-lib uglifyjs
+-D uglifyjs_overwrite
+-D uglifyjs_bin=node_modules/.bin/terser 
+# -D uglifyjs_disable
+--no-traces

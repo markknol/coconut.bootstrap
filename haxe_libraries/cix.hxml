@@ -1,0 +1,7 @@
+-D cix=0.1.0
+# @install: lix --silent download "gh://github.com/back2dos/cix#2a91934a87fb82a8c2b0e97e5361364498aa6cbc" into cix/0.1.0/github/2a91934a87fb82a8c2b0e97e5361364498aa6cbc
+-lib tink_color
+-lib tink_csss
+-lib tink_domspec
+-lib tink_macro
+-cp ${HAXE_LIBCACHE}/cix/0.1.0/github/2a91934a87fb82a8c2b0e97e5361364498aa6cbc/src

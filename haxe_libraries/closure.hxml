@@ -1,0 +1,4 @@
+# @install: lix --silent download "haxelib:closure#0.3.0" into closure/0.3.0/haxelib
+-D closure=0.3.0
+-cp ${HAXESHIM_LIBCACHE}/closure/0.3.0/haxelib/src
+--macro closure.Compiler.use()

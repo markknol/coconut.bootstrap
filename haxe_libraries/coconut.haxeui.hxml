@@ -1,0 +1,6 @@
+# @install: lix --silent download "gh://github.com/MVCoconut/coconut.haxeui#f21c8b73de3a4494238e88b4d24f9363f797487f" into coconut.haxeui/0.0.0/github/f21c8b73de3a4494238e88b4d24f9363f797487f
+-lib coconut.diffing
+-lib haxeui-core
+-cp ${HAXE_LIBCACHE}/coconut.haxeui/0.0.0/github/f21c8b73de3a4494238e88b4d24f9363f797487f/src
+-D coconut.haxeui=0.0.0
+--macro coconut.haxeui.macros.Setup.all()

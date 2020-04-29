@@ -1,0 +1,11 @@
+{
+  "name": "cocoonut.bootstrap",
+  "version": "1.0.0",
+  "description": "coconut.ui bootstrap components",
+  "author": "markknol",
+  "license": "MIT",
+  "dependencies": {
+    "lix": "^15.9.0",
+    "terser": "^4.6.12"
+  }
+}
