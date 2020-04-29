@@ -8,6 +8,7 @@ class ProgressBar extends View {
 	@:attribute var variant:Variant = null;
 
 	@:attribute var now:Float;
+	@:attribute var height:Float = null;
 	@:attribute var min:Float = 0.0;
 	@:attribute var max:Float = 100.0;
 	@:attribute var label:String = "";
@@ -16,7 +17,7 @@ class ProgressBar extends View {
 	@:attribute var animated:Bool = false;
 
 	function render() '
-		<div class=${className.add('$prefix')}>
+		<div class=${className.add('$prefix')} style="height: ${(height != null ? '${height}px' : null)};">
 			<div role="progressbar" 
 				class=${[
 					'$prefix-bar' => true,
@@ -27,7 +28,7 @@ class ProgressBar extends View {
 				aria-valuenow=${now} 
 				aria-valuemin=${min} 
 				aria-valuemax=${max} 
-				style="width: ${getPercentage(now, min, max)}">
+				style="width: ${getPercentage(now, min, max)};">
 				<if ${srOnly}>
 					<span className="sr-only">${label}</span>
 				<else>

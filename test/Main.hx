@@ -413,15 +413,18 @@ class Root extends View {
 				<p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 				<previewSection>
 					<H4 name="progress-example">Example</H4>
-					<p>Default progress bar. Add a <code>label</code> prop to show a visible percentage. Add a <code>srOnly</code> prop to hide the label visually.</p>
+					<p>Default progress bar. Add a <code>label</code> prop to show a visible percentage. Add a <code>srOnly</code> prop to hide the label visually.
+					Add a <code>height</code> prop to give it a different height.</p>
 					<let now=${40}>
 						<ProgressBar now=${now} label=${'$now%'} className="my-1" />
 						<ProgressBar now=${now} label=${'$now%'} srOnly className="my-1" />
+						<ProgressBar now=${now} label=${'$now%'} height=${25} className="my-1" />
 					</let>
 					<codeExample>${"
 						<let now=${40}>
 							<ProgressBar now=${now} label=${'$now%'} />
 							<ProgressBar now=${now} label=${'$now%'} srOnly/>
+							<ProgressBar now=${now} label=${'$now%'} height='25' />
 						</let>
 					"}</codeExample>
 
