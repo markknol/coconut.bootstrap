@@ -4,7 +4,11 @@
   "description": "coconut.ui bootstrap components",
   "author": "markknol",
   "license": "MIT",
-  "dependencies": {
+  "scripts": {
+    "dev": "fast-live-reload -sp 7070 -p 9002 --serve ./bin bin --execute \"echo true\""
+  },
+  "devDependencies": {
+    "fast-live-reload": "^2.8.2",
     "lix": "^15.9.0",
     "terser": "^4.6.12"
   }
