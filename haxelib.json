@@ -1,0 +1,14 @@
+{
+  "name": "coconut.bootstrap",
+  "url" : "https://github.com/markknol/coconut.bootstrap/",
+  "license": "MIT",
+  "tags": ["haxe","js","coconut","reactive","ui","bootstrap"],
+  "description": "Bootstrap for Haxe/Coconut.ui",
+  "classPath": "src",
+  "version": "0.1.0",
+  "releasenote": "Initial release",
+  "contributors": ["markknol"],
+  "dependencies": {
+      "coconut.vdom": ""
+  }
+}
