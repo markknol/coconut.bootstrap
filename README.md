@@ -43,15 +43,15 @@ yarn lix install gh:markknol/coconut.bootstrap
  * [ ] Carousel
  * [ ] Forms
  * [ ] Input Group
- * [ ] Jumbotron
+ * [x] Jumbotron
  * [ ] List Group
  * [ ] Modal
  * [ ] Navs
  * [ ] Navbar
  * [ ] Overlays
- * [ ] Pagination
+ * [x] Pagination
  * [ ] Popovers
- * [ ] Progress
+ * [x] Progress
  * [ ] Spinners
  * [ ] Table
  * [ ] Tabs

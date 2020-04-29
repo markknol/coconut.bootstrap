@@ -39,6 +39,9 @@ class Root extends View {
 						<dd><a href="#card">Card</a></dd>
 						<dd><a href="#dropdown">Dropdown</a></dd>
 						<dd><a href="#image">Images</a></dd>
+						<dd><a href="#jumbotron">Jumbotron</a></dd>
+						<dd><a href="#pagination">Pagination</a></dd>
+						<dd><a href="#progress">Progress bars</a></dd>
 					</dl>
 				</div>
 			</Col>
@@ -292,7 +295,163 @@ class Root extends View {
 					<codeExample>${"
 						<Image src='https://placekitten.com/1024/400' alt='Lorum ipsum' fluid />
 					"}</codeExample>
+				</previewSection>
+				
+				<H3 name="jumbotron">Jumbotron</H3>
+				<p class="lead">A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
+				<previewSection>
+					<Jumbotron>
+						<h1>Hello, world!</h1>
+						<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+						<p><Button variant=${Primary}>Learn more</Button></p>
+					</Jumbotron>
+					<codeExample>${"
+						<Jumbotron>
+							<h1>Hello, world!</h1>
+							<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+							<p><Button variant=${Primary}>Learn more</Button></p>
+						</Jumbotron>
+					"}</codeExample>
+						
+					<H4 name="jumbotron-fluid">Fluid jumbotron</H4>
+					<p>Use the <code>fluid</code> to make the jumbotron full width, and without rounded corners.</p>
+					<Jumbotron fluid>
+						<Container>
+							<h1>Fluid jumbotron</h1>
+							<p>This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+						</Container>
+					</Jumbotron>
+					<codeExample>${"
+						<Jumbotron fluid>
+							<Container>
+								<h1>Fluid jumbotron</h1>
+								<p>This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+							</Container>
+						</Jumbotron>
+					"}</codeExample>
 					
+				</previewSection>
+				
+				<H3 name="pagination">Pagination</H3>
+				<p class="lead">A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
+				<previewSection>
+					<H4 name="pagination-size">Pagination sizes</H4>
+					<p>Larger or smaller pagination? Add <code>size=$${Large}</code>, <code>size=$${Small}</code> for additional sizes.</p>
+					<Pagination>
+						<for ${idx in 1...5}>
+							<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
+						</for>
+					</Pagination>
+					<Pagination size=${Large}>
+						<for ${idx in 1...5}>
+							<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
+						</for>
+					</Pagination>
+					<Pagination size=${Small}>
+						<for ${idx in 1...5}>
+							<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
+						</for>
+					</Pagination>
+					<codeExample>${"
+						<Pagination>
+							<for ${idx in 1...5}>
+								<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
+							</for>
+						</Pagination>
+						<Pagination size=${Large}>
+							<for ${idx in 1...5}>
+								<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
+							</for>
+						</Pagination>
+						<Pagination size=${Small}>
+							<for ${idx in 1...5}>
+								<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
+							</for>
+						</Pagination>
+					"}</codeExample>
+
+					<H4 name="pagination-extra">Pagination helpers</H4>
+					<p> For building more complex pagination UI, there are few convenient sub-components for adding 
+					"First", "Previous", "Next", and "Last" buttons, as well as an Ellipsis item for indicating previous or continuing results.
+					</p>
+					<Pagination>
+						<Pagination.First href="#" />
+						<Pagination.Prev href="#"/>
+						<Pagination.Item href="#">{1}</Pagination.Item>
+						<Pagination.Ellipsis />
+						<Pagination.Item href="#">{10}</Pagination.Item>
+						<Pagination.Item href="#">{11}</Pagination.Item>
+						<Pagination.Item href="#" active>{12}</Pagination.Item>
+						<Pagination.Item href="#">{13}</Pagination.Item>
+						<Pagination.Item disabled>{14}</Pagination.Item>
+						<Pagination.Ellipsis />
+						<Pagination.Item href="#">{20}</Pagination.Item>
+						<Pagination.Next href="#" />
+						<Pagination.Last href="#" />
+					</Pagination>
+					<codeExample>${"
+						<Pagination>
+							<Pagination.First href='#' />
+							<Pagination.Prev href='#'/>
+							<Pagination.Item href='#'>{1}</Pagination.Item>
+							<Pagination.Ellipsis />
+							<Pagination.Item href='#'>{10}</Pagination.Item>
+							<Pagination.Item href='#'>{11}</Pagination.Item>
+							<Pagination.Item href='#' active>{12}</Pagination.Item>
+							<Pagination.Item href='#'>{13}</Pagination.Item>
+							<Pagination.Item disabled>{14}</Pagination.Item>
+							<Pagination.Ellipsis />
+							<Pagination.Item href='#'>{20}</Pagination.Item>
+							<Pagination.Next href='#' />
+							<Pagination.Last href='#' />
+						</Pagination>
+					"}</codeExample>
+				</previewSection>
+
+				
+				<H3 name="progress">Progress bars</H3>
+				<p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
+				<previewSection>
+					<H4 name="progress-example">Example</H4>
+					<p>Default progress bar. Add a <code>label</code> prop to show a visible percentage. Add a <code>srOnly</code> prop to hide the label visually.</p>
+					<let now=${40}>
+						<ProgressBar now=${now} label=${'$now%'} className="my-1" />
+						<ProgressBar now=${now} label=${'$now%'} srOnly className="my-1" />
+					</let>
+					<codeExample>${"
+						<let now=${40}>
+							<ProgressBar now=${now} label=${'$now%'} />
+							<ProgressBar now=${now} label=${'$now%'} srOnly/>
+						</let>
+					"}</codeExample>
+
+					<H4 name="progress-variant">Progress bars variants</H4>
+					<p>Progress bars use some of the same button and alert classes for consistent styles.</p>
+
+					<ProgressBar variant=${Success} now=${40} className="my-1" />
+					<ProgressBar variant=${Info} now=${20} className="my-1" />
+					<ProgressBar variant=${Warning} now=${60} className="my-1" />
+					<ProgressBar variant=${Danger} now=${80} className="my-1" />
+					<codeExample>${"
+						<ProgressBar variant=${Success} now=${40}  />
+						<ProgressBar variant=${Info} now=${20} />
+						<ProgressBar variant=${Warning} now=${60} />
+						<ProgressBar variant=${Danger} now=${80} />
+					"}</codeExample>
+					
+					<H4 name="progress-variant">Striped / animated progress bars</H4>
+					<p>Uses a gradient to create a striped effect.</p>
+					<ProgressBar striped variant=${Success} now=${40} className="my-1" />
+					<ProgressBar striped variant=${Info} now=${20} className="my-1" />
+					<ProgressBar striped animated variant=${Warning} now=${60} className="my-1" />
+					<ProgressBar striped animated variant=${Danger} now=${80} className="my-1" />
+					<codeExample>${"
+						<ProgressBar striped variant=${Success} now=${40}  />
+						<ProgressBar striped variant=${Info} now=${20} />
+						<ProgressBar striped animated variant=${Warning} now=${60} />
+						<ProgressBar striped animated variant=${Danger} now=${80} />
+					"}</codeExample>
+						
 				</previewSection>
 			</Col>
 		</Row>
