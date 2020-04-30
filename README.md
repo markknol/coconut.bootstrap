@@ -116,12 +116,6 @@ class Item implements Model {
 
 ```
 
-### Stylesheets
-
-Because Coconut-Bootstrap doesn't depend on a very precise version of Bootstrap, we don't ship with any included CSS. However, a stylesheet is required to use these components. 
-
-How and which Bootstrap styles you include is up to you, but the simplest way is to include the latest styles from the CDN. A little more information about the benefits of using a CDN can be found in the [Bootstrap introduction](https://getbootstrap.com/docs/4.4/getting-started/introduction/).
-
 ### Open Visual Studio Code 
 
 1. File > Open folder > Select your new project folder
@@ -130,18 +124,18 @@ How and which Bootstrap styles you include is up to you, but the simplest way is
 
 > You're ready to create cool stuff now
 
+A live demo of this example can be found here: <https://haxe.stroep.nl/coconut-bootstrap/example/>
+
 ### Importing components
 
 You can import individual components like: `import bootstrap.Button`. If you want all the components, use `import bootstrap.*`.
 
-```html
-<link
-	rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous"
-/>
-```
+### Stylesheets
+
+Because Coconut-Bootstrap doesn't depend on a very precise version of Bootstrap, we don't ship with any included CSS. However, a stylesheet is required to use these components. 
+
+How and which Bootstrap styles you include is up to you, but the simplest way is to include the latest styles from the CDN. A little more information about the benefits of using a CDN can be found in the [Bootstrap introduction](https://getbootstrap.com/docs/4.4/getting-started/introduction/).
+
 
 ### Make production build
 
@@ -224,6 +218,8 @@ The project is still under development, but works with the components listed bel
  </table>
 
 > **Note:** Because there aren't components doesn't mean you can't use it, for example to create a spinner you can already use `<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>`. 
+
+A live demo of all the components can be found here <https://haxe.stroep.nl/coconut-bootstrap/>
 
 ## Browser support
 
