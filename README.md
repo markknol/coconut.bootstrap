@@ -32,7 +32,7 @@ md src
 md bin
 ```
 
-Create _[src/build.hx](build-example.hx)_
+Create _[src/build.hxml](build-example.hxml)_
 ```hxml
 -cp src
 -lib coconut.vdom
