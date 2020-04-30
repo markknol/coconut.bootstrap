@@ -32,7 +32,7 @@ md src
 md bin
 ```
 
-Create _build.hxml_
+Create _[src/build.hx](build-example.hx)_
 ```hxml
 -cp src
 -lib coconut.vdom
@@ -44,38 +44,36 @@ Create _build.hxml_
 -js bin/main.js
 ```
 
-Create _bin/index.html_
+Create _[bin/index.html](bin/example/index.html)_
 
 ```html
 <!DOCTYPE>
 <html>
 <head>
 	<meta charset="utf8" />
-	<title>Hello coconut.bootstrap</title>
+	<title>🥥 Coconut.ui Bootstrap Example</title>
 </head>
-<body>
+<body class="bg-light">
 	<link
 		rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 		crossorigin="anonymous"
 	/>
-	<script src="main.js"></script>
+ 	<script src="main.js"></script>
 </body>
 </html>
 ```
 
-Create _src/Main.hx_
+Create _[src/Main.hx](test/example/Main.hx)_
 ```haxe
-package;
-
+import js.Browser.document;
+import js.Browser.window;
+import coconut.vdom.Renderer.hxx;
+import coconut.data.Model;
+import coconut.ui.View;
 import coconut.data.*;
-import coconut.ui.*;
-import coconut.Ui.hxx;
-import tink.state.*;
-import js.Browser.*;
-
-using tink.CoreApi;
+import bootstrap.*;
 
 class Main {
 	static function main() {
@@ -88,7 +86,7 @@ class Main {
 class Root extends View {
 	@:state var items:List<Item> = null;
 
-	function add() {
+	function add(_) {
 		items = items.append(new Item({id: window.prompt("name")}));
 	}
 
@@ -97,20 +95,25 @@ class Root extends View {
 	}
 
 	function render() '
-		<div>
-			<button onclick=${add}>Add item</button>
-			<ul>
+		<Container>
+			<Jumbotron>
+				<h1>Hello, world!</h1>
+				<p>This is an example of how to use Haxe, Coconut.ui and bootstrap at the same time.</p>
+			</Jumbotron>
+			<ul class="list-group my-3">
 				<for ${i in items}>
-					<li>${i.id} <button onclick=${remove(i.id)}>x</button></li>
+					<li class="list-group-item">${i.id} <Button onclick=${remove(i.id)} variant=${Secondary}>x</Button></li>
 				</for>
 			</ul>
-		</div>
+			<Button onclick=${add}>Add item</Button>
+		</Container>
 	';
 }
 
 class Item implements Model {
 	@:constant var id:String;
 }
+
 ```
 
 ### Stylesheets

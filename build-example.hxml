@@ -1,12 +1,12 @@
 -cp src
--cp test/website
+-cp test/example
 -lib coconut.vdom
 -lib cix
 -main Main
 -dce full
 -D analyzer-optimize
 -D js_es=6
--js bin/main.js
+-js bin/example/example.js
 
 -lib uglifyjs
 -D uglifyjs_overwrite
