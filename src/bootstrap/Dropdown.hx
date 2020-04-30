@@ -3,29 +3,56 @@ package bootstrap;
 class Dropdown extends View {
 	public static final prefix = 'dropdown';
 
-	@:attribute var children:Children;
+	@:attribute var variant:Variant = null;
+	@:attribute var caption:String;
 	@:attribute var className:ClassName = null;
-	
+
+	@:attribute function menu(tags:MenuTags):Children;
+	@:controlled var open:Bool = false;
+
+	static var tags:MenuTags = {
+		link: function (attr) '
+			<a href=${attr.url} class=${attr.className.add('$prefix-item')}>${...attr.children}</a>
+		',
+		divider: function (attr) '
+			<div class="$prefix-divider"></div>
+		'
+	}
+
 	function render() '
-		<div class=${className.add(prefix)}>${...children}</div>
+		<div class=${className.add(prefix)}>
+			<Button variant=${variant} class="$prefix-toggle" onclick=$handleClick>${caption}</Button>
+			<div class=${['$prefix-menu' => true, 'show' => open]}>
+				${...menu(tags)}
+			</div>
+		</div>
 	';
-	
-	public static function Menu(attr:{?className:ClassName, id:String, children:Children}) '
-		<div aria-label="test" id=${attr.id} class=${attr.className.add('$prefix-menu')}>${...attr.children}</div>
-	';
-	
-	public static function Toggle(attr:{?variant: Variant, id:String, ?className:ClassName, children:String}) '
-		<Button variant=${attr.variant} className=${attr.className.add('$prefix-toggle')}>${attr.children}</Button>
-	';
-	
-	public static function Item(attr:{href:String, ?className:ClassName, children:Children}) '
-		<a href=${attr.href} class=${attr.className.add('$prefix-item')}>${...attr.children}</a>
-	';
+
+	function handleClick(e)
+		if (!open) {
+			open = true;
+			e.stopPropagation();
+			var body = js.Browser.document.body;
+			body.addEventListener('click', function close() {
+				open = false;
+				body.removeEventListener('click', close);
+			});
+		}
+}
+
+private typedef MenuTags = {
+	function link(attr:LinkAttr):RenderResult;
+	function divider(attr:{}):RenderResult;
+}
+private typedef LinkAttr = {
+	url:String,
+	?className:ClassName,
+	children:Children
 }
 /*
 <div class="dropdown">
 	<button aria-haspopup="true" aria-expanded="false" id="dropdown-basic" type="button" class="dropdown-toggle btn btn-success">Dropdown Button</button>
-	<div x-placement="bottom-start" aria-labelledby="dropdown-basic" class="dropdown-menu" style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;">
+	<div x-placement="bottom-start" aria-captionledby="dropdown-basic" class="dropdown-menu" style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;">
 		<a href="#/action-1" class="dropdown-item">Action</a>
 		<a href="#/action-2" class="dropdown-item">Another action</a>
 		<a href="#/action-3" class="dropdown-item">Something else</a>

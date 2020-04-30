@@ -107,7 +107,7 @@ class Root extends View {
 						<for ${variant in Variant.all}><Badge variant=${variant} pill=${true}>${variant}</Badge></for>
 					"}</codeExample>
 				</previewSection>
-				
+
 				<H3 name="breadcrumb">Breadcrumb</H3>
 				<p class="lead">Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.</p>
 				<previewSection>
@@ -128,7 +128,7 @@ class Root extends View {
 						</Breadcrumb>
 					"}</codeExample>
 				</previewSection>
-				
+
 				<H3 name="button">Buttons</H3>
 				<p class="lead">Custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
 				<previewSection>
@@ -153,7 +153,7 @@ class Root extends View {
 							<Button variant=${variant}>${variant}</Button>
 						</for>
 					"}</codeExample>
-					
+
 					<H4 name="button-size">Sizes</H4>
 					<p>Fancy larger or smaller buttons? Add <code>size=$${Large}</code>, <code>size=$${Small}</code> for additional sizes.</p>
 					<Button size=${Large} variant=${Primary}>Large button</Button>${" "}
@@ -173,7 +173,7 @@ class Root extends View {
 					<Button variant=${Secondary} disabled>Disabled button</Button>${" "}
 					<Button variant=${Primary} active>Active button</Button>${" "}
 					<Button variant=${Secondary} active>Active button</Button>${" "}
-					
+
 					<codeExample>${"
 						<Button variant=${Primary} disabled>Disabled button</Button>
 						<Button variant=${Secondary} disabled>Disabled button</Button>
@@ -187,7 +187,7 @@ class Root extends View {
 					<Button type=${Reset}>Reset</Button>${" "}
 					<Button type=${Input}>Input</Button>${" "}
 					<Button type=${Default}>Button</Button>${" "}
-					
+
 					<codeExample>${"
 						<Button href='#'>Hyperlink</Button>
 						<Button type=${Submit}>Submit</Button>
@@ -211,7 +211,7 @@ class Root extends View {
 							<Button>8</Button>
 						</ButtonGroup>
 					</ButtonToolbar>
-					
+
 					<codeExample>${"
 						<ButtonToolbar ariaLabel='Toolbar with button groups'>
 							<ButtonGroup className='mr-2' ariaLabel='First group'>
@@ -226,7 +226,7 @@ class Root extends View {
 						</ButtonToolbar>
 					"}</codeExample>
 				</previewSection>
-				
+
 				<H3 name="card">Card</H3>
 				<p class="lead">Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
 				<previewSection>
@@ -259,19 +259,18 @@ class Root extends View {
 				<H3 name="dropdown">Dropdown</H3>
 				<p class="lead">Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown.</p>
 				<previewSection>
-					<Dropdown>
-						<Dropdown.Toggle variant=${Success} id="dropdown-menu">
-							Dropdown Button
-						</Dropdown.Toggle>
-						<Dropdown.Menu id="dropdown-menu">
-							<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-							<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-							<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-						</Dropdown.Menu>
+					<Dropdown variant=${Success}>
+						<caption>Dropdown Button</caption>
+						<menu>
+							<link url="#/action-1">Action</link>
+							<link url="#/action-2">Another action</link>
+							<divider />
+							<link url="#/action-3">Something else</link>
+						</menu>
 					</Dropdown>
 				</previewSection>
 
-				
+
 				<H3 name="image">Images</H3>
 				<p class="lead">Documentation and examples for opting images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.</p>
 				<previewSection>
@@ -281,14 +280,14 @@ class Root extends View {
 					<Image src="https://placekitten.com/150/150" alt="Lorum ipsum" rounded />${" "}
 					<Image src="https://placekitten.com/150/150" alt="Lorum ipsum" roundedCircle />${" "}
 					<Image src="https://placekitten.com/150/150" alt="Lorum ipsum" thumbnail />${" "}
-				
+
 					<codeExample>${"
 						<Image src='https://placekitten.com/150/150' alt='Lorum ipsum' />
 						<Image src='https://placekitten.com/150/150' alt='Lorum ipsum' rounded />
 						<Image src='https://placekitten.com/150/150' alt='Lorum ipsum' roundedCircle />
 						<Image src='https://placekitten.com/150/150' alt='Lorum ipsum' thumbnail />
 					"}</codeExample>
-						
+
 					<H4 name="image-fluid">Fluid image</H4>
 					<p>Use the <code>fluid</code> to scale image nicely to the parent element.</p>
 					<Image src="https://placekitten.com/1024/400" alt="Lorum ipsum" fluid/>${" "}
@@ -296,7 +295,7 @@ class Root extends View {
 						<Image src='https://placekitten.com/1024/400' alt='Lorum ipsum' fluid />
 					"}</codeExample>
 				</previewSection>
-				
+
 				<H3 name="jumbotron">Jumbotron</H3>
 				<p class="lead">A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
 				<previewSection>
@@ -312,7 +311,7 @@ class Root extends View {
 							<p><Button variant=${Primary}>Learn more</Button></p>
 						</Jumbotron>
 					"}</codeExample>
-						
+
 					<H4 name="jumbotron-fluid">Fluid jumbotron</H4>
 					<p>Use the <code>fluid</code> to make the jumbotron full width, and without rounded corners.</p>
 					<Jumbotron fluid>
@@ -329,9 +328,9 @@ class Root extends View {
 							</Container>
 						</Jumbotron>
 					"}</codeExample>
-					
+
 				</previewSection>
-				
+
 				<H3 name="pagination">Pagination</H3>
 				<p class="lead">A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
 				<previewSection>
@@ -371,7 +370,7 @@ class Root extends View {
 					"}</codeExample>
 
 					<H4 name="pagination-extra">Pagination helpers</H4>
-					<p> For building more complex pagination UI, there are few convenient sub-components for adding 
+					<p> For building more complex pagination UI, there are few convenient sub-components for adding
 					"First", "Previous", "Next", and "Last" buttons, as well as an Ellipsis item for indicating previous or continuing results.
 					</p>
 					<Pagination>
@@ -408,7 +407,7 @@ class Root extends View {
 					"}</codeExample>
 				</previewSection>
 
-				
+
 				<H3 name="progress">Progress bars</H3>
 				<p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 				<previewSection>
@@ -441,7 +440,7 @@ class Root extends View {
 						<ProgressBar variant=${Warning} now=${60} />
 						<ProgressBar variant=${Danger} now=${80} />
 					"}</codeExample>
-					
+
 					<H4 name="progress-variant">Striped / animated progress bars</H4>
 					<p>Uses a gradient to create a striped effect.</p>
 					<ProgressBar striped variant=${Success} now=${40} className="my-1" />
@@ -454,7 +453,7 @@ class Root extends View {
 						<ProgressBar striped animated variant=${Warning} now=${60} />
 						<ProgressBar striped animated variant=${Danger} now=${80} />
 					"}</codeExample>
-						
+
 				</previewSection>
 			</Col>
 		</Row>

@@ -4,7 +4,7 @@ import coconut.vdom.View;
 
 class Button extends View {
 	static inline final prefix: String = 'btn';
-	
+
 	@:attribute var variant: Variant = Primary;
 	@:attribute var size: Size = Size.Default;
 	@:attribute var block: Bool = false;
@@ -13,15 +13,15 @@ class Button extends View {
 	@:attribute var href: String = null;
 	@:attribute var type: ButtonType = ButtonType.Default;
 
-	@:attribute function onclick():Void {};
-	@:attribute var className:ClassName = null; 
+	@:attribute function onclick(e:js.html.Event):Void {};
+	@:attribute var className:ClassName = null;
 	@:attribute var children:String;
 
 	function render() '
 		<let classes=${className.add([
-			'${prefix}' => true, 
-			'${prefix}-${variant}' => true, 
-			'${prefix}-${size}' => size != null, 
+			'${prefix}' => true,
+			'${prefix}-${variant}' => true,
+			'${prefix}-${size}' => size != null,
 			'${prefix}-block' => block,
 			'${prefix}-disabled' => disabled,
 			'active' => active,
