@@ -47,6 +47,13 @@ class Root extends View {
 			</Col>
 			<Col>
 				<h1 class="display-4 my-5">Coconut.ui 🥥 <small><Badge variant=${Info}>bootstrap components</Badge></small></h1>
+				
+				Useful links:
+				<ul>
+					<li><a href="https://github.com/markknol/coconut.bootstrap">coconut.bootstrap on GitHub</a></li>
+					<li><a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/">Official Bootstrap documentation</a></li>
+				</ul>
+
 				<H2 name="components">Components</H2>
 				<hr/>
 				<H3 name="alert">Alert</H3>
