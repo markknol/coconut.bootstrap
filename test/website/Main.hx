@@ -342,35 +342,47 @@ class Root extends View {
 					<H4 name="pagination-size">Pagination sizes</H4>
 					<p>Larger or smaller pagination? Add <code>size=$${Large}</code>, <code>size=$${Small}</code> for additional sizes.</p>
 					<Pagination>
-						<for ${idx in 1...5}>
-							<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
-						</for>
+						<items>
+							<for ${idx in 1...5}>
+								<item active=${idx == 2}>${idx}</item>
+							</for>
+						</items>
 					</Pagination>
 					<Pagination size=${Large}>
-						<for ${idx in 1...5}>
-							<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
-						</for>
+						<items>
+							<for ${idx in 1...5}>
+								<item active=${idx == 2}>${idx}</item>
+							</for>
+						</items>
 					</Pagination>
 					<Pagination size=${Small}>
-						<for ${idx in 1...5}>
-							<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
-						</for>
+						<items>
+							<for ${idx in 1...5}>
+								<item active=${idx == 2}>${idx}</item>
+							</for>
+						</items>
 					</Pagination>
 					<codeExample>${"
 						<Pagination>
-							<for ${idx in 1...5}>
-								<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
-							</for>
+							<items>
+								<for ${idx in 1...5}>
+									<item active=${idx == 2}>${idx}</item>
+								</for>
+							</items>
 						</Pagination>
 						<Pagination size=${Large}>
-							<for ${idx in 1...5}>
-								<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
-							</for>
+							<items>
+								<for ${idx in 1...5}>
+									<item active=${idx == 2}>${idx}</item>
+								</for>
+							</items>
 						</Pagination>
 						<Pagination size=${Small}>
-							<for ${idx in 1...5}>
-								<Pagination.Item active=${idx == 2}>${idx}</Pagination.Item>
-							</for>
+							<items>
+								<for ${idx in 1...5}>
+									<item active=${idx == 2}>${idx}</item>
+								</for>
+							</items>
 						</Pagination>
 					"}</codeExample>
 
@@ -379,35 +391,39 @@ class Root extends View {
 					"First", "Previous", "Next", and "Last" buttons, as well as an Ellipsis item for indicating previous or continuing results.
 					</p>
 					<Pagination>
-						<Pagination.First href="#" />
-						<Pagination.Prev href="#"/>
-						<Pagination.Item href="#">{1}</Pagination.Item>
-						<Pagination.Ellipsis />
-						<Pagination.Item href="#">{10}</Pagination.Item>
-						<Pagination.Item href="#">{11}</Pagination.Item>
-						<Pagination.Item href="#" active>{12}</Pagination.Item>
-						<Pagination.Item href="#">{13}</Pagination.Item>
-						<Pagination.Item disabled>{14}</Pagination.Item>
-						<Pagination.Ellipsis />
-						<Pagination.Item href="#">{20}</Pagination.Item>
-						<Pagination.Next href="#" />
-						<Pagination.Last href="#" />
+						<items>
+							<first href="#" />
+							<prev href="#"/>
+							<item href="#">{1}</item>
+							<ellipsis />
+							<item href="#">{10}</item>
+							<item href="#">{11}</item>
+							<item href="#" active>{12}</item>
+							<item href="#">{13}</item>
+							<item disabled>{14}</item>
+							<ellipsis />
+							<item href="#">{20}</item>
+							<next href="#" />
+							<last href="#" />
+						</items>
 					</Pagination>
 					<codeExample>${"
 						<Pagination>
-							<Pagination.First href='#' />
-							<Pagination.Prev href='#'/>
-							<Pagination.Item href='#'>{1}</Pagination.Item>
-							<Pagination.Ellipsis />
-							<Pagination.Item href='#'>{10}</Pagination.Item>
-							<Pagination.Item href='#'>{11}</Pagination.Item>
-							<Pagination.Item href='#' active>{12}</Pagination.Item>
-							<Pagination.Item href='#'>{13}</Pagination.Item>
-							<Pagination.Item disabled>{14}</Pagination.Item>
-							<Pagination.Ellipsis />
-							<Pagination.Item href='#'>{20}</Pagination.Item>
-							<Pagination.Next href='#' />
-							<Pagination.Last href='#' />
+							<items>
+								<first href='#' />
+								<prev href='#'/>
+								<item href='#'>{1}</item>
+								<ellipsis />
+								<item href='#'>{10}</item>
+								<item href='#'>{11}</item>
+								<item href='#' active>{12}</item>
+								<item href='#'>{13}</item>
+								<item disabled>{14}</item>
+								<ellipsis />
+								<item href='#'>{20}</item>
+								<next href='#' />
+								<last href='#' />
+							</items>
 						</Pagination>
 					"}</codeExample>
 				</previewSection>
