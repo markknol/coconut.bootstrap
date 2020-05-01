@@ -273,6 +273,17 @@ class Root extends View {
 							<link url="#/action-3">Something else</link>
 						</menu>
 					</Dropdown>
+					<codeExample>${"
+						<Dropdown variant=${Success}>
+							<caption>Dropdown Button</caption>
+							<menu>
+								<link url='#/action-1'>Action</link>
+								<link url='#/action-2'>Another action</link>
+								<divider />
+								<link url='#/action-3'>Something else</link>
+							</menu>
+						</Dropdown>
+					"}</codeExample>
 				</previewSection>
 
 
