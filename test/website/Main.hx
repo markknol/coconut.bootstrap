@@ -38,6 +38,7 @@ class Root extends View {
 						<dd><a href="#dropdown">Dropdown</a></dd>
 						<dd><a href="#image">Images</a></dd>
 						<dd><a href="#jumbotron">Jumbotron</a></dd>
+						<dd><a href="#listgroup">List group</a></dd>
 						<dd><a href="#pagination">Pagination</a></dd>
 						<dd><a href="#progress">Progress bars</a></dd>
 					</dl>
@@ -117,19 +118,23 @@ class Root extends View {
 				<p class="lead">Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.</p>
 				<previewSection>
 					<Breadcrumb>
-						<Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-						<Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-							Library
-						</Breadcrumb.Item>
-						<Breadcrumb.Item active>Data</Breadcrumb.Item>
+						<items>
+							<item href="#">Home</item>
+							<item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+								Library
+							</item>
+							<item active>Data</item>
+						</items>
 					</Breadcrumb>
 					<codeExample>${"
 						<Breadcrumb>
-							<Breadcrumb.Item href='#'>Home</Breadcrumb.Item>
-							<Breadcrumb.Item href='https://getbootstrap.com/docs/4.0/components/breadcrumb/'>
-								Library
-							</Breadcrumb.Item>
-							<Breadcrumb.Item active>Data</Breadcrumb.Item>
+							<items>
+								<item href='#'>Home</item>
+								<item href='https://getbootstrap.com/docs/4.0/components/breadcrumb/'>
+									Library
+								</item>
+								<item active>Data</item>
+							</items>
 						</Breadcrumb>
 					"}</codeExample>
 				</previewSection>
@@ -236,27 +241,27 @@ class Root extends View {
 				<p class="lead">Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
 				<previewSection>
 					<Card>
-						<Card.Header>Card Header</Card.Header>
-						<Card.Body>
-							<Card.Title>Card Title</Card.Title>
-							<Card.Subtitle class="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-							<Card.Text>Some quick example text to build on the card title and make up the bulk of the card content.</Card.Text>
-							<Card.Link href="#">Card link</Card.Link>
-							<Card.Link href="#">Another link</Card.Link>
-						</Card.Body>
-						<Card.Footer>Card Footer</Card.Footer>
+						<Card.header>Card Header</Card.header>
+						<Card.body>
+							<Card.title>Card Title</Card.title>
+							<Card.subtitle class="mb-2 text-muted">Card Subtitle</Card.subtitle>
+							<Card.text>Some quick example text to build on the card title and make up the bulk of the card content.</Card.text>
+							<Card.link href="#">Card link</Card.link>
+							<Card.link href="#">Another link</Card.link>
+						</Card.body>
+						<Card.footer>Card Footer</Card.footer>
 					</Card>
 					<codeExample>${"
 						<Card>
-							<Card.Header>Card Header</Card.Header>
-							<Card.Body>
-								<Card.Title>Card Title</Card.Title>
-								<Card.Subtitle class='mb-2 text-muted'>Card Subtitle</Card.Subtitle>
-								<Card.Text>Some quick example text to build on the card title and make up the bulk of the card content.</Card.Text>
-								<Card.Link href='#'>Card link</Card.Link>
-								<Card.Link href='#'>Another link</Card.Link>
-							</Card.Body>
-							<Card.Footer>Card Footer</Card.Footer>
+							<Card.header>Card Header</Card.header>
+							<Card.body>
+								<Card.title>Card Title</Card.title>
+								<Card.subtitle class='mb-2 text-muted'>Card Subtitle</Card.subtitle>
+								<Card.text>Some quick example text to build on the card title and make up the bulk of the card content.</Card.text>
+								<Card.link href='#'>Card link</Card.link>
+								<Card.link href='#'>Another link</Card.link>
+							</Card.body>
+							<Card.footer>Card Footer</Card.footer>
 						</Card>
 					"}</codeExample>
 				</previewSection>
@@ -486,6 +491,101 @@ class Root extends View {
 						<ProgressBar striped animated variant=${Danger} now=${80} />
 					"}</codeExample>
 
+				</previewSection>
+
+
+				<H3 name="listgroup">List Group</H3>
+				<p class="lead">List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
+				<previewSection>
+					<H4 name="listgroup-example">Basic example</H4>
+					<p>The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
+					Add <code>active</code> to an item to indicate the current active selection.
+					Add <code>disabled</code> to make it appear disabled. </p>
+					<p>For lists without interaction use <code>&lt;items&gt;</code></p>
+					<ListGroup>
+						<items>
+							<item>Item 1</item>
+							<item active>Item 2</item>
+							<item>Item 3</item>
+							<item disabled>Item 4</item>
+							<item>Item 5</item>
+						</items>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<items>
+								<item>Item 1</item>
+								<item active>Item 2</item>
+								<item>Item 3</item>
+								<item disabled>Item 4</item>
+								<item>Item 5</item>
+							</items>
+						</ListGroup>
+					"}</codeExample>
+					<H4 name="listgroup-links">Links</H4>
+					<p>For lists with hyperlinks (rendered to <code>&lt;a&gt;</code> tags) use <code>&lt;links&gt;</code>, each item will require a <code>href</code> prop.</p>
+					<ListGroup>
+						<links>
+							<item href="#">Item 1</item>
+							<item href="#" active>Item 2</item>
+							<item href="#">Item 3</item>
+							<item href="#" disabled>Item 4</item>
+							<item href="#">Item 5</item>
+						</links>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<links>
+								<item href='#'>Item 1</item>
+								<item href='#' active>Item 2</item>
+								<item href='#'>Item 3</item>
+								<item href='#' disabled>Item 4</item>
+								<item href='#'>Item 5</item>
+							</links>
+						</ListGroup>
+					"}</codeExample>
+
+					<H4 name="listgroup-links">Buttons</H4>
+					<p>For lists with buttons (rendered to <code>&lt;buttons&gt;</code> tags) use <code>&lt;buttons&gt;</code>, each item has optional <code>onclick</code> prop.</p>
+					<ListGroup>
+						<buttons>
+							<item>Item 1</item>
+							<item active>Item 2</item>
+							<item>Item 3</item>
+							<item disabled>Item 4</item>
+							<item>Item 5</item>
+						</buttons>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<buttons>
+								<item>Item 1</item>
+								<item active>Item 2</item>
+								<item>Item 3</item>
+								<item disabled>Item 4</item>
+								<item>Item 5</item>
+							</buttons>
+						</ListGroup>
+					"}</codeExample>
+
+					<H4 name="listgroup-variants">List group variants</H4>
+					<p>For lists with buttons (rendered to <code>&lt;buttons&gt;</code> tags) use <code>&lt;buttons&gt;</code>, each item has optional <code>onclick</code> prop.</p>
+					<ListGroup>
+						<items>
+							<for ${variant in Variant.all}>
+								<item variant=${variant}>Item ${variant}</item>
+							</for>
+						</items>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<items>
+								<for ${variant in Variant.all}>
+									<item variant=${variant}>Item ${variant}</item>
+								</for>
+							</items>
+						</ListGroup>
+					"}</codeExample>
 				</previewSection>
 			</Col>
 		</Row>

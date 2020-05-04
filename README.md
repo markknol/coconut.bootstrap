@@ -190,6 +190,7 @@ The project is still under development, but works with the components listed bel
  * [x] Dropdown
  * [x] Image
  * [x] Jumbotron
+ * [x] List Group
  * [x] Pagination
  * [x] Progress
 
@@ -201,7 +202,6 @@ The project is still under development, but works with the components listed bel
  * [ ] Carousel
  * [ ] Forms
  * [ ] Input Group
- * [ ] List Group
  * [ ] Modal
  * [ ] Navs
  * [ ] Navbar

@@ -3,25 +3,34 @@ package bootstrap;
 class Breadcrumb extends View {
 	static inline final prefix: String = 'breadcrumb';
 	
-	@:attribute var children:Children;
 	@:attribute var className:ClassName = null;
+	
+	@:attribute function items(tags:BreadcrumbTags):Children;
 
 	function render() '
 		<ol class=${className.add(prefix)}>
-			${...children}
+			${...items(tags)}
 		</ol>
 	';
 
-	public static function Item(attr:{?href:String, ?active:Bool, ?className:ClassName, children:String}) '
-		<li class=${attr.className.add([
-			'breadcrumb-item' => true, 
-			'active' => attr.active
-		])}>
-			<if ${attr.href != null && !attr.active}>
-				<a href=${attr.href}>${attr.children}</a>
-			<else>
-				${attr.children}
-			</if>
-		</li>
-	';
+	static var tags:BreadcrumbTags = {
+		item: function (attr) '
+			<li class=${attr.className.add([
+				'$prefix-item' => true, 
+				'active' => attr.active
+			])}>
+				<if ${attr.href != null && !attr.active}>
+					<a href=${attr.href}>${attr.children}</a>
+				<else>
+					${attr.children}
+				</if>
+			</li>
+		',
+	}
 }
+
+typedef BreadcrumbTags = {
+	function item(attr:BreadcrumbItemAttr):RenderResult;
+}
+
+typedef BreadcrumbItemAttr = {?href:String, ?active:Bool, ?className:ClassName, children:String}

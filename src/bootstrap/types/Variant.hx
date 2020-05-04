@@ -1,8 +1,8 @@
 package bootstrap.types;
 
 enum abstract Variant(String) to String {
-	public static final all:Array<Variant> = [Primary,Secondary,Success,Danger,Info,Dark,Light];
-	public static final allOutline:Array<Variant> = [OutlinePrimary,OutlineSecondary,OutlineSuccess,OutlineDanger,OutlineInfo,OutlineDark,OutlineLight];
+	public static final all:Array<Variant> = [Primary,Secondary,Success,Danger,Warning,Info,Dark,Light];
+	public static final allOutline:Array<Variant> = [OutlinePrimary,OutlineSecondary,OutlineSuccess,OutlineDanger,OutlineWarning,OutlineInfo,OutlineDark,OutlineLight];
 
 	var Primary = 'primary';
 	var Secondary = 'secondary';
