@@ -380,7 +380,7 @@ class Root extends View {
 							</items>
 						</ListGroup>
 					"}</codeExample>
-					<H4 name="listgroup-links">Links</H4>
+					<H4 name="listgroup-links">List Group Links</H4>
 					<p>For lists with hyperlinks (rendered to <code>&lt;a&gt;</code> tags) use <code>&lt;links&gt;</code>, each item will require a <code>href</code> prop.</p>
 					<ListGroup>
 						<links>
@@ -403,7 +403,7 @@ class Root extends View {
 						</ListGroup>
 					"}</codeExample>
 
-					<H4 name="listgroup-links">Buttons</H4>
+					<H4 name="listgroup-buttons">List Group Buttons</H4>
 					<p>For lists with buttons (rendered to <code>&lt;buttons&gt;</code> tags) use <code>&lt;buttons&gt;</code>, each item has optional <code>onclick</code> prop.</p>
 					<ListGroup>
 						<buttons>
