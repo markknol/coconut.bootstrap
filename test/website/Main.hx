@@ -352,6 +352,100 @@ class Root extends View {
 
 				</previewSection>
 
+				<H3 name="listgroup">List Group</H3>
+				<p class="lead">List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
+				<previewSection>
+					<H4 name="listgroup-example">Basic example</H4>
+					<p>The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
+					Add <code>active</code> to an item to indicate the current active selection.
+					Add <code>disabled</code> to make it appear disabled. </p>
+					<p>For lists without interaction use <code>&lt;items&gt;</code></p>
+					<ListGroup>
+						<items>
+							<item>Item 1</item>
+							<item active>Item 2</item>
+							<item>Item 3</item>
+							<item disabled>Item 4</item>
+							<item>Item 5</item>
+						</items>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<items>
+								<item>Item 1</item>
+								<item active>Item 2</item>
+								<item>Item 3</item>
+								<item disabled>Item 4</item>
+								<item>Item 5</item>
+							</items>
+						</ListGroup>
+					"}</codeExample>
+					<H4 name="listgroup-links">Links</H4>
+					<p>For lists with hyperlinks (rendered to <code>&lt;a&gt;</code> tags) use <code>&lt;links&gt;</code>, each item will require a <code>href</code> prop.</p>
+					<ListGroup>
+						<links>
+							<item href="#">Item 1</item>
+							<item href="#" active>Item 2</item>
+							<item href="#">Item 3</item>
+							<item href="#" disabled>Item 4</item>
+							<item href="#">Item 5</item>
+						</links>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<links>
+								<item href='#'>Item 1</item>
+								<item href='#' active>Item 2</item>
+								<item href='#'>Item 3</item>
+								<item href='#' disabled>Item 4</item>
+								<item href='#'>Item 5</item>
+							</links>
+						</ListGroup>
+					"}</codeExample>
+
+					<H4 name="listgroup-links">Buttons</H4>
+					<p>For lists with buttons (rendered to <code>&lt;buttons&gt;</code> tags) use <code>&lt;buttons&gt;</code>, each item has optional <code>onclick</code> prop.</p>
+					<ListGroup>
+						<buttons>
+							<item>Item 1</item>
+							<item active>Item 2</item>
+							<item>Item 3</item>
+							<item disabled>Item 4</item>
+							<item>Item 5</item>
+						</buttons>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<buttons>
+								<item>Item 1</item>
+								<item active>Item 2</item>
+								<item>Item 3</item>
+								<item disabled>Item 4</item>
+								<item>Item 5</item>
+							</buttons>
+						</ListGroup>
+					"}</codeExample>
+
+					<H4 name="listgroup-variants">List group variants</H4>
+					<p>For lists with buttons (rendered to <code>&lt;buttons&gt;</code> tags) use <code>&lt;buttons&gt;</code>, each item has optional <code>onclick</code> prop.</p>
+					<ListGroup>
+						<items>
+							<for ${variant in Variant.all}>
+								<item variant=${variant}>Item ${variant}</item>
+							</for>
+						</items>
+					</ListGroup>
+					<codeExample>${"
+						<ListGroup>
+							<items>
+								<for ${variant in Variant.all}>
+									<item variant=${variant}>Item ${variant}</item>
+								</for>
+							</items>
+						</ListGroup>
+					"}</codeExample>
+				</previewSection>
+
 				<H3 name="pagination">Pagination</H3>
 				<p class="lead">A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
 				<previewSection>
@@ -493,100 +587,6 @@ class Root extends View {
 
 				</previewSection>
 
-
-				<H3 name="listgroup">List Group</H3>
-				<p class="lead">List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
-				<previewSection>
-					<H4 name="listgroup-example">Basic example</H4>
-					<p>The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
-					Add <code>active</code> to an item to indicate the current active selection.
-					Add <code>disabled</code> to make it appear disabled. </p>
-					<p>For lists without interaction use <code>&lt;items&gt;</code></p>
-					<ListGroup>
-						<items>
-							<item>Item 1</item>
-							<item active>Item 2</item>
-							<item>Item 3</item>
-							<item disabled>Item 4</item>
-							<item>Item 5</item>
-						</items>
-					</ListGroup>
-					<codeExample>${"
-						<ListGroup>
-							<items>
-								<item>Item 1</item>
-								<item active>Item 2</item>
-								<item>Item 3</item>
-								<item disabled>Item 4</item>
-								<item>Item 5</item>
-							</items>
-						</ListGroup>
-					"}</codeExample>
-					<H4 name="listgroup-links">Links</H4>
-					<p>For lists with hyperlinks (rendered to <code>&lt;a&gt;</code> tags) use <code>&lt;links&gt;</code>, each item will require a <code>href</code> prop.</p>
-					<ListGroup>
-						<links>
-							<item href="#">Item 1</item>
-							<item href="#" active>Item 2</item>
-							<item href="#">Item 3</item>
-							<item href="#" disabled>Item 4</item>
-							<item href="#">Item 5</item>
-						</links>
-					</ListGroup>
-					<codeExample>${"
-						<ListGroup>
-							<links>
-								<item href='#'>Item 1</item>
-								<item href='#' active>Item 2</item>
-								<item href='#'>Item 3</item>
-								<item href='#' disabled>Item 4</item>
-								<item href='#'>Item 5</item>
-							</links>
-						</ListGroup>
-					"}</codeExample>
-
-					<H4 name="listgroup-links">Buttons</H4>
-					<p>For lists with buttons (rendered to <code>&lt;buttons&gt;</code> tags) use <code>&lt;buttons&gt;</code>, each item has optional <code>onclick</code> prop.</p>
-					<ListGroup>
-						<buttons>
-							<item>Item 1</item>
-							<item active>Item 2</item>
-							<item>Item 3</item>
-							<item disabled>Item 4</item>
-							<item>Item 5</item>
-						</buttons>
-					</ListGroup>
-					<codeExample>${"
-						<ListGroup>
-							<buttons>
-								<item>Item 1</item>
-								<item active>Item 2</item>
-								<item>Item 3</item>
-								<item disabled>Item 4</item>
-								<item>Item 5</item>
-							</buttons>
-						</ListGroup>
-					"}</codeExample>
-
-					<H4 name="listgroup-variants">List group variants</H4>
-					<p>For lists with buttons (rendered to <code>&lt;buttons&gt;</code> tags) use <code>&lt;buttons&gt;</code>, each item has optional <code>onclick</code> prop.</p>
-					<ListGroup>
-						<items>
-							<for ${variant in Variant.all}>
-								<item variant=${variant}>Item ${variant}</item>
-							</for>
-						</items>
-					</ListGroup>
-					<codeExample>${"
-						<ListGroup>
-							<items>
-								<for ${variant in Variant.all}>
-									<item variant=${variant}>Item ${variant}</item>
-								</for>
-							</items>
-						</ListGroup>
-					"}</codeExample>
-				</previewSection>
 			</Col>
 		</Row>
 	</Container>
