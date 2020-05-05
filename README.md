@@ -7,7 +7,7 @@
 
 Methods and events using jQuery is done imperatively by directly manipulating the DOM. In contrast, `coconut.ui` uses updates to the state to update the virtual DOM. In this way, Coconut-Bootstrap provides a more reliable solution by incorporating Bootstrap functionality into Coconut's virtual DOM. 
 
-> [Coconut.ui](https://github.com/MVCoconut/coconut.ui) is the React alternative for [Haxe](https://haxe.org/). It makes creating interactive UIs easy. Design views for each state using encapsulated components, coconut will update and render the right components when the data changed. Completely type-safe, you profit from all the Haxe goodness!
+> [Coconut.ui](https://github.com/MVCoconut/coconut.ui) is the React alternative for [Haxe](https://haxe.org/). It makes creating interactive UIs easy. Design views for each state using encapsulated components, coconut will update and render the right components when the data changed. Completely type-safe, you profit from all the Haxe goodness! Build responsive, mobile-first projects on the web with the world’s most popular front-end component library.
 
 ![coconut.bootstrap](https://raw.githubusercontent.com/markknol/coconut.bootstrap/master/bin/social.png)
 
