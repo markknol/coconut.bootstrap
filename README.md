@@ -92,7 +92,7 @@ class Root extends View {
 	}
 
 	function remove(id:String) {
-		items = items.filter(function(i) return i.id != id);
+		items = items.filter((i -> i.id != id);
 	}
 
 	function render() '
@@ -101,11 +101,18 @@ class Root extends View {
 				<h1>Hello, world!</h1>
 				<p>This is an example of how to use Haxe, Coconut.ui and bootstrap at the same time.</p>
 			</Jumbotron>
-			<ul class="list-group my-3">
-				<for ${i in items}>
-					<li class="list-group-item">${i.id} <Button onclick=${remove(i.id)} variant=${Secondary}>x</Button></li>
-				</for>
-			</ul>
+			<if ${items.length > 0}>
+				<p><strong>Total items:</strong> ${items.length}</p>
+			<else>
+				<p>Start adding items in your list.</p>
+			</if>
+			<ListGroup className="mb-1">
+				<items>
+					<for ${i in items}>
+						<item>${i.id} <Button onclick=${remove(i.id)} variant=${Light} size=${Small} className="float-right">❌</Button></item>
+					</for>
+				</items>
+			</ListGroup>
 			<Button onclick=${add}>Add item</Button>
 		</Container>
 	';
@@ -114,7 +121,6 @@ class Root extends View {
 class Item implements Model {
 	@:constant var id:String;
 }
-
 ```
 
 ### Open Visual Studio Code 
