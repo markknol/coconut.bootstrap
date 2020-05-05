@@ -625,13 +625,13 @@ class Root extends View {
 					"}</codeExample>
 
 					<H4 name="spinner-button">Button with spinner</H4>
-					Example of how to combine the spinner in a button. 
-					<Button disabled>
-						<Spinner variant=${Light} small /> Loading...
+					<p>Example of how to combine the spinner in a button. </p>
+					<Button>
+						<Spinner variant=${Light} small /> Hold on..
 					</Button>
 					<codeExample>${"
-						<Button disabled>
-							<Spinner variant=${Light} small /> Loading...
+						<Button>
+							<Spinner variant=${Light} small /> Hold on..
 						</Button>
 					"}</codeExample>
 					
