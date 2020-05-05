@@ -25,6 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
+    - run: yarn neko -version
     - run: yarn haxe build.hxml
     - run: yarn haxe build-example.hxml
       env:
