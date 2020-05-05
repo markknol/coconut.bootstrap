@@ -5,7 +5,8 @@
   "author": "markknol",
   "license": "MIT",
   "scripts": {
-    "dev": "fast-live-reload -sp 7070 -p 9002 --serve ./bin bin --execute \"echo true\""
+    "dev": "fast-live-reload -sp 7070 -p 9002 --serve ./bin bin --execute \"echo true\"",
+    "postinstall" : "lix download"
   },
   "devDependencies": {
     "fast-live-reload": "^2.8.2",

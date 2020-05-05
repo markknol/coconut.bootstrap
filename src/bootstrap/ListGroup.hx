@@ -1,18 +1,20 @@
 package bootstrap;
 
 class ListGroup extends View {
-	static inline final prefix: String = 'list-group';
-	
+	static inline final prefix:String = 'list-group';
+
 	@:attribute var className:ClassName = null;
 	@:attribute var flush:Bool = false;
 	@:attribute var horizontal:Bool = false; // TODO: use Size
 
 	@:attribute function items(tags:ListGroupItemTags):Children return null;
+
 	@:attribute function links(tags:ListGroupLinkTags):Children return null;
+
 	@:attribute function buttons(tags:ListGroupButtonTags):Children return null;
 
 	function render() '<>
-		<let className=${className.add(['$prefix' => true, '$prefix-horizontal' => horizontal,'flush' => flush])}>
+		<let className=${className.add(['$prefix' => true, '$prefix-horizontal' => horizontal, 'flush' => flush])}>
 			<if ${items != null}>
 				<ul class=${className}>
 					${...items(itemTags)}
@@ -32,7 +34,7 @@ class ListGroup extends View {
 	</>';
 
 	static var itemTags:ListGroupItemTags = {
-		item: function (attr) '
+		item: function(attr) '
 			<li class=${attr.className.add([
 				'$prefix-item' => true, 
 				'$prefix-item-${attr.variant}' => attr.variant != null,
@@ -45,7 +47,7 @@ class ListGroup extends View {
 	}
 
 	static var linkTags:ListGroupLinkTags = {
-		item: function (attr) '
+		item: function(attr) '
 			<a class=${attr.className.add([
 				'$prefix-item' => true, 
 				'$prefix-item-action' => true, 
@@ -60,7 +62,7 @@ class ListGroup extends View {
 	}
 
 	static var buttonTags:ListGroupButtonTags = {
-		item: function (attr) '
+		item: function(attr) '
 			<button class=${attr.className.add([
 				'$prefix-item' => true, 
 				'$prefix-item-action' => true, 
@@ -81,11 +83,11 @@ typedef ListGroupItemTags = {
 }
 
 typedef ListGroupLinkTags = {
-	function item(attr:ListGroupItemAttr & { href:String }):RenderResult;
+	function item(attr:ListGroupItemAttr & {href:String}):RenderResult;
 }
 
 typedef ListGroupButtonTags = {
-	function item(attr:ListGroupItemAttr & { ?onclick:()->Void }):RenderResult;
+	function item(attr:ListGroupItemAttr & {?onclick:() -> Void}):RenderResult;
 }
 
 typedef ListGroupItemAttr = {?active:Bool, ?disabled:Bool, ?className:ClassName, ?variant:Variant, children:Children}

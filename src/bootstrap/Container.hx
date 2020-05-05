@@ -1,18 +1,19 @@
 package bootstrap;
 
 class Container extends View {
-	static inline final prefix: String = 'container';
+	static inline final prefix:String = 'container';
 
 	@:attribute var children:Children;
 	@:attribute var className:ClassName = null;
 	@:attribute var fluid:Bool = false;
+
 	function render() '
 		<div class=${className.add(['$prefix' => true, '$prefix-fluid' => fluid])}>${...children}</div>
 	';
 }
 
 class Row extends View {
-	static inline final prefix: String = 'row';
+	static inline final prefix:String = 'row';
 
 	@:attribute var children:Children;
 	@:attribute var className:ClassName = null;
@@ -21,9 +22,9 @@ class Row extends View {
 }
 
 class Col extends View {
-	static inline final prefix: String = 'col';
-	// TODO: @:attribute var size: Size = Default;
+	static inline final prefix:String = 'col';
 
+	// TODO: @:attribute var size: Size = Default;
 	@:attribute var noGutters:Bool = false;
 
 	@:attribute var children:Children;
@@ -33,4 +34,3 @@ class Col extends View {
 		<div class=${className.add(['$prefix' => true, 'noGutters' => noGutters])}>${...children}</div>
 	';
 }
-

@@ -1,10 +1,10 @@
 package bootstrap;
 
 class Badge extends View {
-	static inline final prefix: String = 'badge';
-	
-	@:attribute var variant: Variant = Primary;
-	@:attribute var pill: Bool = false;
+	static inline final prefix:String = 'badge';
+
+	@:attribute var variant:Variant = Primary;
+	@:attribute var pill:Bool = false;
 	@:attribute var children:Children;
 
 	function render() '

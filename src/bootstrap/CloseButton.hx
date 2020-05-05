@@ -2,6 +2,7 @@ package bootstrap;
 
 class CloseButton extends View {
 	@:attribute function onclick():Void;
+
 	@:attribute var label:String = "Close";
 
 	function render() '

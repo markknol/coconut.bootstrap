@@ -1,7 +1,7 @@
 package bootstrap;
 
 class Image extends View {
-	static inline final prefix: String = 'img';
+	static inline final prefix:String = 'img';
 
 	@:attribute var className:ClassName = null;
 
@@ -21,12 +21,6 @@ class Image extends View {
 			src=${src} 
 			alt=${alt} 
 			loading=${preload ? "lazy" : "auto"} 
-			class=${className.add([
-				'$prefix' => true, 
-				'$prefix-fluid' => fluid,
-				'rounded' => rounded,
-				'rounded-circle' => roundedCircle,
-				'$prefix-thumbnail' => thumbnail,
-		])} />
+			class=${className.add(['$prefix' => true, '$prefix-fluid' => fluid, 'rounded' => rounded, 'rounded-circle' => roundedCircle, '$prefix-thumbnail' => thumbnail,])} />
 	';
 }

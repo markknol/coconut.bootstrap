@@ -1,13 +1,13 @@
 package bootstrap;
 
 class Alert extends View {
-	static inline final prefix: String = 'alert';
+	static inline final prefix:String = 'alert';
 
 	@:state var show:Bool = true;
 
-	@:attribute var variant: Variant = Primary;
-	@:attribute var dismissible: Bool = false;
-	@:attribute var closeLabel: String = 'Close alert';
+	@:attribute var variant:Variant = Primary;
+	@:attribute var dismissible:Bool = false;
+	@:attribute var closeLabel:String = 'Close alert';
 	@:attribute var children:Children;
 
 	@:attribute function onDismiss():Void {};
