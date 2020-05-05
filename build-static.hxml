@@ -3,4 +3,4 @@
 -lib coconut.html
 -lib cix
 -main Main
--neko out.n
+--interp
