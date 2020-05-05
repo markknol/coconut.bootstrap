@@ -16,9 +16,9 @@ class Main {
 	static function main() {
 		#if sys
 			sys.io.File.saveContent(
-				'bin/example/static.html',
-				sys.io.File.getContent('bin/example/index.html')
-					.split('<script src="example.js"></script>')
+				'bin/static.html',
+				sys.io.File.getContent('bin/index.html')
+					.split('<script src="main.js"></script>')
 					.join(coconut.html.Renderer.render('<Root />'))
 			);
 		#else
