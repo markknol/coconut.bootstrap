@@ -609,14 +609,14 @@ class Root extends View {
 	}
 
 	public static function H2(attr:{?name:String, children:Children}) '
-		<h2 class="mt-3"><if ${attr.name!=null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h2>
+		<h2 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h2>
 	';
 
 	public static function H3(attr:{?name:String, children:Children}) '
-		<h3 class="mt-3"><if ${attr.name!=null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h3>
+		<h3 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h3>
 	';
 
 	public static function H4(attr:{?name:String, children:Children}) '
-		<h4 class="mt-3"><if ${attr.name!=null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h4>
+		<h4 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h4>
 	';
 }

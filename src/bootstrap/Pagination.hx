@@ -59,6 +59,6 @@ private typedef PaginationTags = {
 	function ellipsis(attr:PaginationEllipsisAttr):RenderResult;
 }
 
-private typedef PaginationNavItemAttr = {?href:String, ?onclick:()->Void, ?disabled:Bool, ?className:ClassName}
-private typedef PaginationItemAttr = PaginationNavItemAttr & { children:Children, ?active:Bool }
+private typedef PaginationNavItemAttr = {?href:String, ?onclick:() -> Void, ?disabled:Bool, ?className:ClassName}
+private typedef PaginationItemAttr = PaginationNavItemAttr & {children:Children, ?active:Bool}
 private typedef PaginationEllipsisAttr = {?href:String, ?className:ClassName}

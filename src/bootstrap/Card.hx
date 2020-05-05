@@ -1,7 +1,8 @@
 package bootstrap;
 
 class Card extends View {
-	static inline final prefix: String = 'card';
+	static inline final prefix:String = 'card';
+
 	@:attribute var width:EitherType<String, Float> = null;
 
 	@:attribute var children:Children;
@@ -16,7 +17,7 @@ class Card extends View {
 	public static function header(attr:{?className:ClassName, children:Children}) {
 		return Bootstrap.create(attr.className.add('$prefix-header'), attr.children);
 	}
-	
+
 	public static function footer(attr:{?className:ClassName, children:Children}) {
 		return Bootstrap.create(attr.className.add('$prefix-footer'), attr.children);
 	}

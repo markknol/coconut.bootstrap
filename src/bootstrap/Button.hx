@@ -3,17 +3,18 @@ package bootstrap;
 import coconut.vdom.View;
 
 class Button extends View {
-	static inline final prefix: String = 'btn';
+	static inline final prefix:String = 'btn';
 
-	@:attribute var variant: Variant = Primary;
-	@:attribute var size: Size = Size.Default;
-	@:attribute var block: Bool = false;
-	@:attribute var active: Bool = false;
-	@:attribute var disabled: Bool = false;
-	@:attribute var href: String = null;
-	@:attribute var type: ButtonType = ButtonType.Default;
+	@:attribute var variant:Variant = Primary;
+	@:attribute var size:Size = Size.Default;
+	@:attribute var block:Bool = false;
+	@:attribute var active:Bool = false;
+	@:attribute var disabled:Bool = false;
+	@:attribute var href:String = null;
+	@:attribute var type:ButtonType = ButtonType.Default;
 
 	@:attribute function onclick(e:js.html.Event):Void {};
+
 	@:attribute var className:ClassName = null;
 	@:attribute var children:String;
 
