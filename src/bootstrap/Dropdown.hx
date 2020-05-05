@@ -50,13 +50,3 @@ private typedef LinkAttr = {
 	?className:ClassName,
 	children:Children
 }
-/*
-	<div class="dropdown">
-	<button aria-haspopup="true" aria-expanded="false" id="dropdown-basic" type="button" class="dropdown-toggle btn btn-success">Dropdown Button</button>
-	<div x-placement="bottom-start" aria-captionledby="dropdown-basic" class="dropdown-menu" style="position: absolute; top: 0px; left: 0px; opacity: 0; pointer-events: none;">
-		<a href="#/action-1" class="dropdown-item">Action</a>
-		<a href="#/action-2" class="dropdown-item">Another action</a>
-		<a href="#/action-3" class="dropdown-item">Something else</a>
-	</div>
-	</div>
- */

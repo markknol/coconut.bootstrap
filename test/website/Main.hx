@@ -5,6 +5,7 @@ import js.Browser.window;
 import js.Browser.location;
 import bootstrap.*;
 import bootstrap.Container;
+import bootstrap.Nav;
 import bootstrap.types.Variant;
 import bootstrap.types.Size;
 import bootstrap.Bootstrap;
@@ -42,6 +43,7 @@ class Root extends View {
 						<dd><a href="#pagination">Pagination</a></dd>
 						<dd><a href="#progress">Progress bars</a></dd>
 						<dd><a href="#spinner">Spinner</a></dd>
+						<dd><a href="#nav">Nav</a></dd>
 					</dl>
 				</div>
 			</Col>
@@ -547,7 +549,7 @@ class Root extends View {
 				<H3 name="progress">Progress bars</H3>
 				<p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 				<previewSection>
-					<H4 name="progress-example">Example</H4>
+					<H4 name="progress-example">Progress bar example</H4>
 					<p>Default progress bar. Add a <code>label</code> prop to show a visible percentage. Add a <code>srOnly</code> prop to hide the label visually.
 					Add a <code>height</code> prop to give it a different height.</p>
 					<let now=${40}>
@@ -593,9 +595,9 @@ class Root extends View {
 				</previewSection>
 
 				<H3 name="spinner">Spinner</H3>
-				<p class="lead">Indicate the loading state of a component or page with Bootstrap spinners, built entirely with HTML, CSS, and no JavaScript.</p>
+				<p class="lead">Indicate the loading state of a component or page with Bootstrap spinners.</p>
 				<previewSection>
-					<H4 name="spinner-example">Example</H4>
+					<H4 name="spinner-example">Spinner example</H4>
 					<p>Default spinner. Add a <code>small</code> prop to make it small size.</p>
 					<Spinner className="m-1" /> <Spinner small className="m-1" />
 					<codeExample>${"
@@ -648,6 +650,118 @@ class Root extends View {
 					<codeExample>${"
 						<Spinner variant=${Success}>Loading..</Spinner>
 					"}</codeExample>
+				</previewSection>
+			
+
+				<H3 name="nav">Nav</H3>
+				<p class="lead">Documentation and examples for how to use Bootstrap’s included navigation components.</p>
+				<previewSection>
+					<H4 name="nav-example">Nav example</H4>
+					<p>Use the <code>active</code> prop to highlight an item. Use the <code>disabled</code> prop to visually disable to item.</p>
+					<Nav>
+						<items>
+							<item url="#" active>Item 1</item>
+							<item url="#">Item 2</item>
+							<item url="#">Item 3</item>
+							<item url="#" disabled>Item 4</item>
+						</items>
+					</Nav>
+					<codeExample>${"
+						<Nav>
+							<items>
+								<item url='#' active>Item 1</item>
+								<item url='#'>Item 2</item>
+								<item url='#'>Item 3</item>
+								<item url='#' disabled>Item 4</item>
+							</items>
+						</Nav>
+					"}</codeExample>
+
+					<H4 name="nav-pill">Pills Nav</H4>
+					<p>Add <code>type=$${Pills}</code></p>
+					<Nav type=${Pills}>
+						<items>
+							<item url="#" active>Item 1</item>
+							<item url="#">Item 2</item>
+							<item url="#">Item 3</item>
+							<item url="#" disabled>Item 4</item>
+						</items>
+					</Nav>
+					<codeExample>${"
+						<Nav type=${Pills}>
+							<items>
+								<item url='#' active>Item 1</item>
+								<item url='#'>Item 2</item>
+								<item url='#'>Item 3</item>
+								<item url='#' disabled>Item 4</item>
+							</items>
+						</Nav>
+					"}</codeExample>
+
+					<H4 name="nav-tabs">Tabbed Nav</H4>
+					<p>Add <code>type=$${Tabs}</code></p>
+					<Nav type=${Tabs}>
+						<items>
+							<item url="#" active>Item 1</item>
+							<item url="#">Item 2</item>
+							<item url="#">Item 3</item>
+							<item url="#" disabled>Item 4</item>
+						</items>
+					</Nav>
+					<codeExample>${"
+						<Nav type=${Tabs}>
+							<items>
+								<item url='#' active>Item 1</item>
+								<item url='#'>Item 2</item>
+								<item url='#'>Item 3</item>
+								<item url='#' disabled>Item 4</item>
+							</items>
+						</Nav>
+					"}</codeExample>
+
+					
+					<H4 name="nav-tabs">Justified Nav</H4>
+					<p>Add <code>justified</code> to the nav.</p>
+					<Nav type=${Tabs} justified>
+						<items>
+							<item url="#" active>Item 1</item>
+							<item url="#">Item 2</item>
+							<item url="#">Item 3</item>
+							<item url="#" disabled>Item 4</item>
+						</items>
+					</Nav>
+					<codeExample>${"
+						<Nav type=${Tabs} justified>
+							<items>
+								<item url='#' active>Item 1</item>
+								<item url='#'>Item 2</item>
+								<item url='#'>Item 3</item>
+								<item url='#' disabled>Item 4</item>
+							</items>
+						</Nav>
+					"}</codeExample>
+					
+					<H4 name="nav-tabs">Filled Nav</H4>
+					<p>Add <code>fill</code> to the nav.</p>
+					<Nav type=${Tabs} fill>
+						<items>
+							<item url="#" active>Item 1</item>
+							<item url="#">Item 2</item>
+							<item url="#">Item 3</item>
+							<item url="#" disabled>Item 4</item>
+						</items>
+					</Nav>
+					<codeExample>${"
+						<Nav type=${Tabs} fill>
+							<items>
+								<item url='#' active>Item 1</item>
+								<item url='#'>Item 2</item>
+								<item url='#'>Item 3</item>
+								<item url='#' disabled>Item 4</item>
+							</items>
+						</Nav>
+					"}</codeExample>
+
 				</previewSection>
 
 			</Col>
