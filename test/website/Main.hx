@@ -41,6 +41,7 @@ class Root extends View {
 						<dd><a href="#listgroup">List group</a></dd>
 						<dd><a href="#pagination">Pagination</a></dd>
 						<dd><a href="#progress">Progress bars</a></dd>
+						<dd><a href="#spinner">Spinner</a></dd>
 					</dl>
 				</div>
 			</Col>
@@ -193,18 +194,22 @@ class Root extends View {
 
 					<H4 name="button-types">Types</H4>
 					<Button href="#">Hyperlink</Button>${" "}
-					<Button type=${Submit}>Submit</Button>${" "}
-					<Button type=${Reset}>Reset</Button>${" "}
-					<Button type=${Input}>Input</Button>${" "}
 					<Button type=${Default}>Button</Button>${" "}
-
+					<Button type=${Input}><label>Input</label></Button>${" "}
+					<Button type=${Submit}><label>Submit</label></Button>${" "}
+					<Button type=${Reset}><label>Reset</label></Button>${" "}
 					<codeExample>${"
 						<Button href='#'>Hyperlink</Button>
-						<Button type=${Submit}>Submit</Button>
-						<Button type=${Reset}>Reset</Button>
-						<Button type=${Input}>Input</Button>
 						<Button type=${Default}>Button</Button>
+						<Button type=${Input}><label>Input</label></Button>
+						<Button type=${Submit}><label>Submit</label></Button>
+						<Button type=${Reset}><label>Reset</label></Button>
 					"}</codeExample>
+					
+					<Blockquote>
+						<strong>Note</strong> for type Submit/Reset we provide a label, since it cannot render children in its rendered input value <code>&lt;input value=$${label} /&gt;</code>
+					</Blockquote>
+
 				</previewSection>
 
 				<H3 name="button-group">ButtonGroup / ButtonToolbar</H3>
@@ -587,6 +592,64 @@ class Root extends View {
 
 				</previewSection>
 
+				<H3 name="spinner">Spinner</H3>
+				<p class="lead">Indicate the loading state of a component or page with Bootstrap spinners, built entirely with HTML, CSS, and no JavaScript.</p>
+				<previewSection>
+					<H4 name="spinner-example">Example</H4>
+					<p>Default spinner. Add a <code>small</code> prop to make it small size.</p>
+					<Spinner className="m-1" /> <Spinner small className="m-1" />
+					<codeExample>${"
+						<Spinner />
+						<Spinner small />
+					"}</codeExample>
+
+					<H4 name="spinner-variants">Grow variants</H4>
+					<for ${variant in Variant.all}>
+						<Spinner variant=${variant} className="m-1" />
+					</for>
+					<codeExample>${"
+						<for ${variant in Variant.all}>
+							<Spinner variant=${variant} />
+						</for>
+					"}</codeExample>
+
+					<H4 name="spinner-type">Grow spinner</H4>
+					<p>If you don’t want a bordered spinner, switch to the grow spinner by adding <code>type=$${Grow}</code>.</p>
+					<for ${variant in Variant.all}>
+						<Spinner type=${Grow} variant=${variant} className="m-1" />
+					</for>
+					<codeExample>${"
+						<for ${variant in Variant.all}>
+							<Spinner type=${Grow} variant=${variant} />
+						</for>
+					"}</codeExample>
+
+					<H4 name="spinner-button">Button with spinner</H4>
+					Example of how to combine the spinner in a button. 
+					<Button disabled>
+						<Spinner variant=${Light} small /> Loading...
+					</Button>
+					<codeExample>${"
+						<Button disabled>
+							<Spinner variant=${Light} small /> Loading...
+						</Button>
+					"}</codeExample>
+					
+					<H4 name="spinner-accessibility">Accessibility</H4>
+					<p>
+						To ensure the maximum accessibility for spinner components it is recommended to provide a relevant ARIA role property, 
+						and include screenreader-only readable text representation of the spinner\'s meaning inside the component using Bootstrap\'s <code>sr-only</code> class.
+					</p>
+					<p>
+						By default the accessibility is taken care of, the internal <code>sr-only</code> label is set to <code>"Loading.."</code>. 
+						To change this, simply provide text in the component.
+					</p>
+					<Spinner variant=${Success}>Loading..</Spinner>
+					<codeExample>${"
+						<Spinner variant=${Success}>Loading..</Spinner>
+					"}</codeExample>
+				</previewSection>
+
 			</Col>
 		</Row>
 	</Container>
@@ -618,5 +681,9 @@ class Root extends View {
 
 	public static function H4(attr:{?name:String, children:Children}) '
 		<h4 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h4>
+	';
+
+	public static function Blockquote(attr:{?name:String, children:Children}) '
+		<div class="p-3 mb-2 bg-light text-dark border border-info rounded">${...attr.children}</div>
 	';
 }

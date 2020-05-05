@@ -16,7 +16,9 @@ class Button extends View {
 	@:attribute function onclick(e:js.html.Event):Void {};
 
 	@:attribute var className:ClassName = null;
-	@:attribute var children:String;
+
+	@:attribute var children:Children = null;
+	@:attribute var label:String = null;
 
 	function render() '
 		<let classes=${className.add([
@@ -30,16 +32,16 @@ class Button extends View {
 			<if ${href == null}>
 				<switch ${type}>
 					<case ${Default}>
-						<button type="button" disabled=${disabled} className=${classes} onclick=${onclick} >${children}</button>
-					<case ${Reset}>
-						<input type="reset" disabled=${disabled} className=${classes} onclick=${onclick} value=${children} />
+						<button type="button" disabled=${disabled} className=${classes} onclick=${onclick}>${...children}</button>
 					<case ${Input}>
-						<input type="input" disabled=${disabled} className=${classes} onclick=${onclick} value=${children} />
+						<input type="input" disabled=${disabled} className=${classes} onclick=${onclick} value=${label} />
+					<case ${Reset}>
+						<input type="reset" disabled=${disabled} className=${classes} onclick=${onclick} value=${label} />
 					<case ${Submit}>
-						<input type="submit" disabled=${disabled} className=${classes} onclick=${onclick} value=${children} />
+						<input type="submit" disabled=${disabled} className=${classes} onclick=${onclick} value=${label} />
 				</switch>
 			<else>
-				<a href=${href} className=${classes}>${children}</a>
+				<a href=${href} className=${classes}>${...children}</a>
 			</if>
 		</let>
 	';
