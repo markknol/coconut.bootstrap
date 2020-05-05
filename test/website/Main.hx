@@ -1,23 +1,31 @@
 package;
 
-import js.Browser.document;
-import js.Browser.window;
-import js.Browser.location;
+#if js
+import js.Browser.*;
+#end
 import bootstrap.*;
 import bootstrap.Container;
 import bootstrap.types.Variant;
 import bootstrap.types.Size;
 import bootstrap.Bootstrap;
-import coconut.vdom.Renderer.hxx;
-import coconut.vdom.View;
-import coconut.ui.Children;
+import coconut.ui.Renderer.hxx;
+import coconut.ui.*;
 import tink.domspec.ClassName;
 
 class Main {
 	static function main() {
-		coconut.ui.Renderer.mount(
-			cast document.body.appendChild(document.createDivElement()), hxx('<Root />')
+		#if sys
+			sys.io.File.saveContent(
+				'bin/example/static.html',
+				sys.io.File.getContent('bin/example/index.html')
+					.split('<script src="example.js"></script>')
+					.join(coconut.html.Renderer.render('<Root />'))
+			);
+		#else
+		Renderer.mount(
+			cast document.body.appendChild(document.createDivElement()), '<Root />'
 		);
+		#end
 	}
 }
 
@@ -46,7 +54,7 @@ class Root extends View {
 			</Col>
 			<Col>
 				<h1 class="display-4 my-5">Coconut.ui 🥥 <small><Badge variant=${Info}>bootstrap components</Badge></small></h1>
-				
+
 				Useful links:
 				<ul>
 					<li><a href="https://github.com/markknol/coconut.bootstrap">coconut.bootstrap on GitHub</a></li>
@@ -604,7 +612,12 @@ class Root extends View {
 	}
 
 	public static function codeExample(attr:{children:String}) {
-		var formattedCode:String = js.Syntax.code("window.formatCode({0})", attr.children);
+		var formattedCode:String =
+			#if js
+				js.Syntax.code("window.formatCode({0})", attr.children);
+			#else
+				attr.children;
+			#end
 		return hxx('<pre class="border rounded p-4 my-1 mb-3"><code>${formattedCode}</code></pre>');
 	}
 

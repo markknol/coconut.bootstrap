@@ -1,7 +1,5 @@
 package bootstrap;
 
-import coconut.vdom.View;
-
 class Alert extends View {
 	static inline final prefix: String = 'alert';
 
@@ -19,8 +17,8 @@ class Alert extends View {
 			<div
 				role="alert"
 				className=${[
-					'${prefix}' => true, 
-					'${prefix}-${variant}' => true, 
+					'${prefix}' => true,
+					'${prefix}-${variant}' => true,
 				]}
 			>
 				<if ${dismissible}>

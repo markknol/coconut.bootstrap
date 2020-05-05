@@ -1,8 +1,5 @@
 package bootstrap;
 
-import haxe.extern.EitherType;
-import coconut.vdom.View;
-
 class Container extends View {
 	static inline final prefix: String = 'container';
 
@@ -26,7 +23,7 @@ class Row extends View {
 class Col extends View {
 	static inline final prefix: String = 'col';
 	// TODO: @:attribute var size: Size = Default;
-	
+
 	@:attribute var noGutters:Bool = false;
 
 	@:attribute var children:Children;

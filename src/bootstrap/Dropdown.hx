@@ -30,6 +30,7 @@ class Dropdown extends View {
 
 	function handleClick(e)
 		if (!open) {
+			#if js
 			open = true;
 			e.stopPropagation();
 			var body = js.Browser.document.body;
@@ -37,6 +38,7 @@ class Dropdown extends View {
 				open = false;
 				body.removeEventListener('click', close);
 			});
+			#end
 		}
 }
 
