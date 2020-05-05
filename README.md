@@ -200,6 +200,7 @@ The project is still under development, but works with the components listed bel
  * [x] List Group
  * [x] Pagination
  * [x] Progress
+ * [x] Spinners
 
  </td>
  <td valign=top>
@@ -214,7 +215,6 @@ The project is still under development, but works with the components listed bel
  * [ ] Navbar
  * [ ] Overlays
  * [ ] Popovers
- * [ ] Spinners
  * [ ] Table
  * [ ] Tabs
  * [ ] Tooltips
