@@ -1,0 +1,6 @@
+# @install: lix --silent download "gh://github.com/MVCoconut/coconut.html#50ce49e418c3412e780d6f2415cbf721cb4c7067" into coconut.html/0.0.0/github/50ce49e418c3412e780d6f2415cbf721cb4c7067
+-lib coconut.ui
+-lib tink_htmlstring
+-cp ${HAXE_LIBCACHE}/coconut.html/0.0.0/github/50ce49e418c3412e780d6f2415cbf721cb4c7067/src
+-D coconut.html=0.0.0
+--macro coconut.html.macros.Setup.perform()

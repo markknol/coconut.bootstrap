@@ -1,7 +1,5 @@
 package bootstrap;
 
-import coconut.vdom.View;
-
 class Button extends View {
 	static inline final prefix:String = 'btn';
 
@@ -13,7 +11,7 @@ class Button extends View {
 	@:attribute var href:String = null;
 	@:attribute var type:ButtonType = ButtonType.Default;
 
-	@:attribute function onclick(e:js.html.Event):Void {};
+	@:attribute function onclick(e:#if js js.html.Event #else Any #end):Void {};
 
 	@:attribute var className:ClassName = null;
 

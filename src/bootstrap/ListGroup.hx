@@ -7,11 +7,11 @@ class ListGroup extends View {
 	@:attribute var flush:Bool = false;
 	@:attribute var horizontal:Bool = false; // TODO: use Size
 
-	@:attribute function items(tags:ListGroupItemTags):Children return null;
+	@:optional @:attribute function items(tags:ListGroupItemTags):Children;
 
-	@:attribute function links(tags:ListGroupLinkTags):Children return null;
+	@:optional @:attribute function links(tags:ListGroupLinkTags):Children;
 
-	@:attribute function buttons(tags:ListGroupButtonTags):Children return null;
+	@:optional @:attribute function buttons(tags:ListGroupButtonTags):Children;
 
 	function render() '<>
 		<let className=${className.add(['$prefix' => true, '$prefix-horizontal' => horizontal, 'flush' => flush])}>
@@ -36,7 +36,7 @@ class ListGroup extends View {
 	static var itemTags:ListGroupItemTags = {
 		item: function(attr) '
 			<li class=${attr.className.add([
-				'$prefix-item' => true, 
+				'$prefix-item' => true,
 				'$prefix-item-${attr.variant}' => attr.variant != null,
 				'active' => attr.active,
 				'disabled' => attr.disabled,
@@ -49,8 +49,8 @@ class ListGroup extends View {
 	static var linkTags:ListGroupLinkTags = {
 		item: function(attr) '
 			<a class=${attr.className.add([
-				'$prefix-item' => true, 
-				'$prefix-item-action' => true, 
+				'$prefix-item' => true,
+				'$prefix-item-action' => true,
 				'$prefix-item-${attr.variant}' => attr.variant != null,
 				'active' => attr.active,
 				'disabled' => attr.disabled,
@@ -64,8 +64,8 @@ class ListGroup extends View {
 	static var buttonTags:ListGroupButtonTags = {
 		item: function(attr) '
 			<button class=${attr.className.add([
-				'$prefix-item' => true, 
-				'$prefix-item-action' => true, 
+				'$prefix-item' => true,
+				'$prefix-item-action' => true,
 				'$prefix-item-${attr.variant}' => attr.variant != null,
 				'active' => attr.active,
 			])}

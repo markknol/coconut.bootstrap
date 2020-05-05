@@ -1,8 +1,5 @@
 package bootstrap;
 
-import haxe.extern.EitherType;
-import coconut.vdom.View;
-
 class Container extends View {
 	static inline final prefix:String = 'container';
 
