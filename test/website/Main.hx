@@ -14,6 +14,8 @@ import coconut.vdom.View;
 import coconut.ui.Children;
 import tink.domspec.ClassName;
 
+import cix.Style.rule as css;
+
 class Main {
 	static function main() {
 		coconut.ui.Renderer.mount(
@@ -46,11 +48,22 @@ class Main {
 }
 
 class Root extends View {
+	static final NAV_COLUMN = css('
+		@media (min-width: 924px) {
+			min-height: 100%;
+			background: #f00;
+		}
+		@media (max-width: 924px) {
+			min-height: 100%;
+			background: #ff0;
+		}
+	');
+
 	function render() '
 	<Container fluid>
 		<Row>
 			<Col className="col-lg-2">
-				<div class="sticky-top border-right py-3" id="navigation">
+				<div class=${NAV_COLUMN.add("sticky-top border-right py-3")} id="navigation">
 					<Nav vertical>
 						<items>
 							<item url="#components"><strong>Components</strong></item>
@@ -68,11 +81,13 @@ class Root extends View {
 							<item url="#progress">Progress bars</item>
 							<item url="#spinner">Spinner</item>
 							<item url="#nav">Nav</item>
+							<item url="#table">Table</item>
 						</items>
 					</Nav>
 				</div>
 			</Col>
 			<Col>
+				<Container>
 				<h1 class="display-4 my-5">Coconut.ui 🥥 <small><Badge variant=${Info}>bootstrap components</Badge></small></h1>
 				
 				Useful links:
@@ -171,7 +186,6 @@ class Root extends View {
 				<H3 name="button">Buttons</H3>
 				<p class="lead">Custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
 				<previewSection id="button">
-					<H4 name="button-normal">Normal buttons</H4>
 					<p>Use any of the available button style types to quickly create a styled button. Just modify the <code>variant</code> prop.</p>
 					<for ${variant in Variant.all}>
 						<Button variant=${variant}>${variant}</Button>${" "}
@@ -328,7 +342,6 @@ class Root extends View {
 				<H3 name="image">Images</H3>
 				<p class="lead">Documentation and examples for opting images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.</p>
 				<previewSection id="image">
-					<H4 name="image-shape">Image shapes</H4>
 					<p>Use the <code>rounded</code>, <code>roundedCircle</code> and <code>thumbnail</code> props to customise the image.</p>
 					<Image src="https://placekitten.com/150/150" alt="Lorum ipsum" />${" "}
 					<Image src="https://placekitten.com/150/150" alt="Lorum ipsum" rounded />${" "}
@@ -388,7 +401,6 @@ class Root extends View {
 				<H3 name="listgroup">List Group</H3>
 				<p class="lead">List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
 				<previewSection id="listgroup">
-					<H4 name="listgroup-example">Basic example</H4>
 					<p>The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
 					Add <code>active</code> to an item to indicate the current active selection.
 					Add <code>disabled</code> to make it appear disabled. </p>
@@ -530,7 +542,7 @@ class Root extends View {
 					"}</codeExample>
 
 					<H4 name="pagination-extra">Pagination helpers</H4>
-					<p> For building more complex pagination UI, there are few convenient sub-components for adding
+					<p>For building more complex pagination UI, there are few convenient sub-components for adding
 					"First", "Previous", "Next", and "Last" buttons, as well as an Ellipsis item for indicating previous or continuing results.
 					</p>
 					<Pagination>
@@ -575,7 +587,6 @@ class Root extends View {
 				<H3 name="progress">Progress bars</H3>
 				<p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 				<previewSection id="progress">
-					<H4 name="progress-example">Progress bar example</H4>
 					<p>Default progress bar. Add a <code>label</code> prop to show a visible percentage. Add a <code>srOnly</code> prop to hide the label visually.
 					Add a <code>height</code> prop to give it a different height.</p>
 					<let now=${40}>
@@ -623,7 +634,6 @@ class Root extends View {
 				<H3 name="spinner">Spinner</H3>
 				<p class="lead">Indicate the loading state of a component or page with Bootstrap spinners.</p>
 				<previewSection id="spinner">
-					<H4 name="spinner-example">Spinner example</H4>
 					<p>Default spinner. Add a <code>small</code> prop to make it small size.</p>
 					<Spinner className="m-1" /> <Spinner small className="m-1" />
 					<codeExample>${"
@@ -682,7 +692,6 @@ class Root extends View {
 				<H3 name="nav">Nav</H3>
 				<p class="lead">Documentation and examples for how to use Bootstrap’s included navigation components.</p>
 				<previewSection id="nav">
-					<H4 name="nav-example">Nav example</H4>
 					<p>Use the <code>active</code> prop to highlight an item. Use the <code>disabled</code> prop to visually disable to item.</p>
 					<Nav>
 						<items>
@@ -788,6 +797,119 @@ class Root extends View {
 					"}</codeExample>
 
 				</previewSection>
+
+				<H3 name="table">Tables</H3>
+				<p class="lead">Tables allows to present tabular data / arrange data into rows and columns.</p>
+				<previewSection id="table">
+					<p>Use the <code>striped</code>, <code>bordered</code> and <code>hover</code> props to customise the table.</p>
+					<Table bordered striped hover>
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Table heading</th><th>Table heading</th><th>Table heading</th>
+							</tr>
+						</thead>
+						<tbody>
+							<for ${idx in 1...5}>
+								<tr>
+									<td>$idx</td>
+									<td>Table cell</td><td>Table cell</td><td>Table cell</td>
+								</tr>
+							</for>
+						</tbody>
+					</Table>
+					<codeExample>${"
+						<Table>
+							<thead>
+								<tr>
+									<th>#</th><th>Table heading</th><th>Table heading</th><th>Table heading</th>
+								</tr>
+							</thead>
+							<tbody>
+								<for ${idx in 1...5}>
+									<tr>
+										<td>$idx</td><td>Table cell</td><td>Table cell</td><td>Table cell</td>
+									</tr>
+								</for>
+							</tbody>
+						</Table>
+					"}</codeExample>
+					
+					<H4 name="table-dark">Dark table</H4>
+					<p>Use <code>dark</code> to created inverted table.</p>
+					<Table dark>
+						<thead>
+							<tr>
+								<th>#</th><th>Table heading</th><th>Table heading</th>
+							</tr>
+						</thead>
+						<tbody>
+							<for ${idx in 1...5}>
+								<tr>
+									<td>$idx</td>
+									<td>Table cell</td>
+									<td>Table cell</td>
+								</tr>
+							</for>
+						</tbody>
+					</Table>
+					<codeExample>${"
+						<Table dark>
+							<thead>
+								<tr>
+									<th>#</th><th>Table heading</th><th>Table heading</th>
+								</tr>
+							</thead>
+							<tbody>
+								<for ${idx in 1...5}>
+									<tr>
+										<td>$idx</td>
+										<td>Table cell</td>
+										<td>Table cell</td>
+									</tr>
+								</for>
+							</tbody>
+						</Table>
+					"}</codeExample>
+
+					<H4 name="table-responsive">Responsive table</H4>
+					<p>Use <code>responsive=$${Small}</code>, <code>responsive=$${Default}</code>, <code>responsive=$${Large}</code>, <code>responsive=$${ExtraLarge}</code> as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.</p>
+					<Table responsive=${ExtraLarge}>
+						<thead>
+							<tr>
+								<th>#</th>
+								<for ${idx in 0...6}><th>Table heading</th></for>
+							</tr>
+						</thead>
+						<tbody>
+							<for ${idx in 1...5}>
+								<tr>
+									<td>$idx</td>
+									<for ${idx in 0...6}><td>Table cell</td></for>
+								</tr>
+							</for>
+						</tbody>
+					</Table>
+					<codeExample>${"
+						<Table responsive=${ExtraLarge}>
+							<thead>
+								<tr>
+									<th>#</th>
+									<for ${idx in 0...6}><th>Table heading</th></for>
+								</tr>
+							</thead>
+							<tbody>
+								<for ${idx in 1...5}>
+									<tr>
+										<td>$idx</td>
+										<for ${idx in 0...6}><td>Table cell</td></for>
+									</tr>
+								</for>
+							</tbody>
+						</Table>
+					"}</codeExample>
+				</previewSection>
+				</Container>
 			</Col>
 		</Row>
 	</Container>
@@ -801,10 +923,10 @@ class Root extends View {
 	}
 
 	public static function previewSection(attr:{id:String, children:Children}) '
-		<div data-area=${attr.id} class="border rounded p-4 my-3 mb-5 bg-white">${...attr.children}</div>
+		<div data-area=${attr.id} class="shadow p-3 border rounded p-4 my-3 mb-5 bg-white">${...attr.children}</div>
 	';
 
-	static final PRE = cix.Style.rule('
+	static final PRE = css('
 		tab-size: 2;
 		white-space: pre-wrap;
 		background:#282c34;
