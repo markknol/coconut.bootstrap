@@ -19,6 +19,29 @@ class Main {
 		coconut.ui.Renderer.mount(
 			cast document.body.appendChild(document.createDivElement()), hxx('<Root />')
 		);
+
+		observeAreas();
+	}
+
+
+	static function observeAreas() {
+		#if js
+		var links = document.querySelectorAll('div[data-area]');
+		inline function asElement(v) return Std.downcast(v, js.html.Element);
+		var intersectionCallback = (entries:Array<js.html.IntersectionObserverEntry>, _) -> {
+			for (entry in entries)  {
+				if (entry.target.dataset.area != null) {
+					var elmts = document.querySelectorAll('#navigation a[href="#${entry.target.dataset.area}"]');
+					for (el in elmts) {
+						var el =  asElement(el);
+						(entry.isIntersecting ? el.classList.add : el.classList.remove)('font-weight-bold');
+					}
+				}
+			};
+		};
+		var observer = new js.html.IntersectionObserver(intersectionCallback, {threshold: 1/4});
+		for(link in links) observer.observe(asElement(link));
+		#end
 	}
 }
 
@@ -27,24 +50,26 @@ class Root extends View {
 	<Container fluid>
 		<Row>
 			<Col className="col-lg-2">
-				<div class="sticky-top border-right py-3">
-					<dl>
-						<dt><a href="#components">Components</a></dt>
-						<dd><a href="#alert">Alert</a></dd>
-						<dd><a href="#badge">Badge / Pill</a></dd>
-						<dd><a href="#breadcrumb">Breadcrumb</a></dd>
-						<dd><a href="#button">Buttons</a></dd>
-						<dd><a href="#button-group">Button Group</a></dd>
-						<dd><a href="#card">Card</a></dd>
-						<dd><a href="#dropdown">Dropdown</a></dd>
-						<dd><a href="#image">Images</a></dd>
-						<dd><a href="#jumbotron">Jumbotron</a></dd>
-						<dd><a href="#listgroup">List group</a></dd>
-						<dd><a href="#pagination">Pagination</a></dd>
-						<dd><a href="#progress">Progress bars</a></dd>
-						<dd><a href="#spinner">Spinner</a></dd>
-						<dd><a href="#nav">Nav</a></dd>
-					</dl>
+				<div class="sticky-top border-right py-3" id="navigation">
+					<Nav vertical>
+						<items>
+							<item url="#components"><strong>Components</strong></item>
+							<item url="#alert">Alert</item>
+							<item url="#badge">Badge / Pill</item>
+							<item url="#breadcrumb">Breadcrumb</item>
+							<item url="#button">Buttons</item>
+							<item url="#button-group">Button Group</item>
+							<item url="#card">Card</item>
+							<item url="#dropdown">Dropdown</item>
+							<item url="#image">Images</item>
+							<item url="#jumbotron">Jumbotron</item>
+							<item url="#listgroup">List group</item>
+							<item url="#pagination">Pagination</item>
+							<item url="#progress">Progress bars</item>
+							<item url="#spinner">Spinner</item>
+							<item url="#nav">Nav</item>
+						</items>
+					</Nav>
 				</div>
 			</Col>
 			<Col>
@@ -58,9 +83,10 @@ class Root extends View {
 
 				<H2 name="components">Components</H2>
 				<hr/>
+
 				<H3 name="alert">Alert</H3>
 				<p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
-				<previewSection>
+				<previewSection id="alert">
 					<for ${variant in Variant.all}>
 						<Alert variant=${variant} dismissible>
 							This is a ${variant} alert. Check it out!
@@ -97,7 +123,7 @@ class Root extends View {
 
 				<H3 name="badge">Badge</H3>
 				<p class="lead">Badges scale to match the size of the immediate parent element by using relative font sizing and em units.</p>
-				<previewSection>
+				<previewSection id="badge">
 					<H4 name="badge-variants">Badge variants</H4>
 					<p>Add any of the below mentioned <code>variant</code> modifier classes to change the appearance of a badge.</p>
 					<for ${variant in Variant.all}>
@@ -119,7 +145,7 @@ class Root extends View {
 
 				<H3 name="breadcrumb">Breadcrumb</H3>
 				<p class="lead">Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.</p>
-				<previewSection>
+				<previewSection id="breadcrumb">
 					<Breadcrumb>
 						<items>
 							<item href="#">Home</item>
@@ -144,7 +170,7 @@ class Root extends View {
 
 				<H3 name="button">Buttons</H3>
 				<p class="lead">Custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
-				<previewSection>
+				<previewSection id="button">
 					<H4 name="button-normal">Normal buttons</H4>
 					<p>Use any of the available button style types to quickly create a styled button. Just modify the <code>variant</code> prop.</p>
 					<for ${variant in Variant.all}>
@@ -216,7 +242,7 @@ class Root extends View {
 
 				<H3 name="button-group">ButtonGroup / ButtonToolbar</H3>
 				<p class="lead">Group a series of buttons together on a single line with the button group.</p>
-				<previewSection>
+				<previewSection id="button-group">
 					<ButtonToolbar ariaLabel="Toolbar with button groups">
 						<ButtonGroup className="mr-2" ariaLabel="First group">
 							<for ${idx in 1...5}><Button>${Std.string(idx)}</Button>${" "}</for>
@@ -246,7 +272,7 @@ class Root extends View {
 
 				<H3 name="card">Card</H3>
 				<p class="lead">Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
-				<previewSection>
+				<previewSection id="card">
 					<Card>
 						<Card.header>Card Header</Card.header>
 						<Card.body>
@@ -275,7 +301,7 @@ class Root extends View {
 
 				<H3 name="dropdown">Dropdown</H3>
 				<p class="lead">Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown.</p>
-				<previewSection>
+				<previewSection id="dropdown">
 					<Dropdown variant=${Success}>
 						<caption>Dropdown Button</caption>
 						<menu>
@@ -301,7 +327,7 @@ class Root extends View {
 
 				<H3 name="image">Images</H3>
 				<p class="lead">Documentation and examples for opting images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.</p>
-				<previewSection>
+				<previewSection id="image">
 					<H4 name="image-shape">Image shapes</H4>
 					<p>Use the <code>rounded</code>, <code>roundedCircle</code> and <code>thumbnail</code> props to customise the image.</p>
 					<Image src="https://placekitten.com/150/150" alt="Lorum ipsum" />${" "}
@@ -326,7 +352,7 @@ class Root extends View {
 
 				<H3 name="jumbotron">Jumbotron</H3>
 				<p class="lead">A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
-				<previewSection>
+				<previewSection id="jumbotron">
 					<Jumbotron>
 						<h1>Hello, world!</h1>
 						<p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -361,7 +387,7 @@ class Root extends View {
 
 				<H3 name="listgroup">List Group</H3>
 				<p class="lead">List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
-				<previewSection>
+				<previewSection id="listgroup">
 					<H4 name="listgroup-example">Basic example</H4>
 					<p>The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
 					Add <code>active</code> to an item to indicate the current active selection.
@@ -455,7 +481,7 @@ class Root extends View {
 
 				<H3 name="pagination">Pagination</H3>
 				<p class="lead">A lightweight, flexible component that can optionally extend the entire viewport to showcase key content on your site.</p>
-				<previewSection>
+				<previewSection id="pagination">
 					<H4 name="pagination-size">Pagination sizes</H4>
 					<p>Larger or smaller pagination? Add <code>size=$${Large}</code>, <code>size=$${Small}</code> for additional sizes.</p>
 					<Pagination>
@@ -548,7 +574,7 @@ class Root extends View {
 
 				<H3 name="progress">Progress bars</H3>
 				<p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
-				<previewSection>
+				<previewSection id="progress">
 					<H4 name="progress-example">Progress bar example</H4>
 					<p>Default progress bar. Add a <code>label</code> prop to show a visible percentage. Add a <code>srOnly</code> prop to hide the label visually.
 					Add a <code>height</code> prop to give it a different height.</p>
@@ -596,7 +622,7 @@ class Root extends View {
 
 				<H3 name="spinner">Spinner</H3>
 				<p class="lead">Indicate the loading state of a component or page with Bootstrap spinners.</p>
-				<previewSection>
+				<previewSection id="spinner">
 					<H4 name="spinner-example">Spinner example</H4>
 					<p>Default spinner. Add a <code>small</code> prop to make it small size.</p>
 					<Spinner className="m-1" /> <Spinner small className="m-1" />
@@ -655,7 +681,7 @@ class Root extends View {
 
 				<H3 name="nav">Nav</H3>
 				<p class="lead">Documentation and examples for how to use Bootstrap’s included navigation components.</p>
-				<previewSection>
+				<previewSection id="nav">
 					<H4 name="nav-example">Nav example</H4>
 					<p>Use the <code>active</code> prop to highlight an item. Use the <code>disabled</code> prop to visually disable to item.</p>
 					<Nav>
@@ -719,7 +745,6 @@ class Root extends View {
 						</Nav>
 					"}</codeExample>
 
-					
 					<H4 name="nav-tabs">Justified Nav</H4>
 					<p>Add <code>justified</code> to the nav.</p>
 					<Nav type=${Tabs} justified>
@@ -763,7 +788,6 @@ class Root extends View {
 					"}</codeExample>
 
 				</previewSection>
-
 			</Col>
 		</Row>
 	</Container>
@@ -776,25 +800,34 @@ class Root extends View {
 		window.setTimeout(() -> location.hash = hash, 0);
 	}
 
-	public static function previewSection(attr:{children:Children}) {
-		return Bootstrap.create('border rounded p-4 my-3 mb-5 bg-white', attr.children);
-	}
+	public static function previewSection(attr:{id:String, children:Children}) '
+		<div data-area=${attr.id} class="border rounded p-4 my-3 mb-5 bg-white">${...attr.children}</div>
+	';
+
+	static final PRE = cix.Style.rule('
+		tab-size: 2;
+		white-space: pre-wrap;
+		background:#282c34;
+		 code {
+			color: rgb(197, 200, 198);
+		}
+	');
 
 	public static function codeExample(attr:{children:String}) {
 		var formattedCode:String = js.Syntax.code("window.formatCode({0})", attr.children);
-		return hxx('<pre class="border rounded p-4 my-1 mb-3"><code>${formattedCode}</code></pre>');
+		return hxx('<pre class=${PRE.add("border rounded p-4 my-1 mb-3")}><code>${formattedCode}</code></pre>');
 	}
 
-	public static function H2(attr:{?name:String, children:Children}) '
-		<h2 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h2>
+	public static function H2(attr:{?name:String, children:String}) '
+		<h2 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${attr.children}</h2>
 	';
 
-	public static function H3(attr:{?name:String, children:Children}) '
-		<h3 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h3>
+	public static function H3(attr:{?name:String, children:String}) '
+		<h3 class="mt-5"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${attr.children}</h3>
 	';
 
-	public static function H4(attr:{?name:String, children:Children}) '
-		<h4 class="mt-3"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${...attr.children}</h4>
+	public static function H4(attr:{?name:String, children:String}) '
+		<h4 class="mt-4"><if ${attr.name != null}><a id=${attr.name} href="#${attr.name}">#</a> </if>${attr.children}</h4>
 	';
 
 	public static function Blockquote(attr:{?name:String, children:Children}) '

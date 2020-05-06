@@ -49,8 +49,8 @@ Create _[src/build.hxml](build-example.hxml)_
 Create _[bin/index.html](bin/example/index.html)_
 
 ```html
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="utf8" />
 	<title>🥥 Coconut.ui Bootstrap Example</title>
