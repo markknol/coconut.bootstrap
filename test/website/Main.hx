@@ -8,12 +8,10 @@ import bootstrap.Container;
 import bootstrap.Nav;
 import bootstrap.types.Variant;
 import bootstrap.types.Size;
-import bootstrap.Bootstrap;
 import coconut.vdom.Renderer.hxx;
 import coconut.vdom.View;
 import coconut.ui.Children;
 import tink.domspec.ClassName;
-
 import cix.Style.rule as css;
 
 class Main {
@@ -25,45 +23,35 @@ class Main {
 		observeAreas();
 	}
 
-
 	static function observeAreas() {
 		#if js
 		var links = document.querySelectorAll('div[data-area]');
 		inline function asElement(v) return Std.downcast(v, js.html.Element);
 		var intersectionCallback = (entries:Array<js.html.IntersectionObserverEntry>, _) -> {
-			for (entry in entries)  {
+			for (entry in entries) {
 				if (entry.target.dataset.area != null) {
 					var elmts = document.querySelectorAll('#navigation a[href="#${entry.target.dataset.area}"]');
 					for (el in elmts) {
-						var el =  asElement(el);
+						var el = asElement(el);
 						(entry.isIntersecting ? el.classList.add : el.classList.remove)('font-weight-bold');
 					}
 				}
 			};
 		};
-		var observer = new js.html.IntersectionObserver(intersectionCallback, {threshold: 1/4});
-		for(link in links) observer.observe(asElement(link));
+		var observer = new js.html.IntersectionObserver(intersectionCallback, {threshold: 1 / 4});
+		for (link in links) {
+			observer.observe(asElement(link));
+		}
 		#end
 	}
 }
 
 class Root extends View {
-	static final NAV_COLUMN = css('
-		@media (min-width: 924px) {
-			min-height: 100%;
-			background: #f00;
-		}
-		@media (max-width: 924px) {
-			min-height: 100%;
-			background: #ff0;
-		}
-	');
-
 	function render() '
 	<Container fluid>
 		<Row>
 			<Col className="col-lg-2">
-				<div class=${NAV_COLUMN.add("sticky-top border-right py-3")} id="navigation">
+				<div class=${Styles.navColumn.add("sticky-top border-right py-3")} id="navigation">
 					<Nav vertical>
 						<items>
 							<item url="#components"><strong>Components</strong></item>
@@ -92,8 +80,16 @@ class Root extends View {
 				
 				Useful links:
 				<ul>
-					<li><a href="https://github.com/markknol/coconut.bootstrap">coconut.bootstrap on GitHub</a></li>
-					<li><a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/">Official Bootstrap documentation</a></li>
+					<li class="font-weight-bold"><svg role="img" style="width:24px;height:24px;zoom: 0.75;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path fill="#555" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> <a href="https://github.com/markknol/coconut.bootstrap">Coconut Bootstrap on GitHub</a></li>
+					<li><a href="https://github.com/MVCoconut/coconut.ui/">Coconut.ui documentation</a></li>
+					<li><a href="https://getbootstrap.com/docs/4.4/getting-started/introduction/">Official Bootstrap documentation</a>
+						<ul>
+							<li><a href="https://getbootstrap.com/docs/4.4/layout/overview/">Bootstrap layout</a></li>
+							<li><a href="https://getbootstrap.com/docs/4.4/content/typography/">Bootstrap typography</a></li>
+							<li><a href="https://getbootstrap.com/docs/4.4/utilities/borders/">Bootstrap utilities</a></li>
+						</ul>
+					</li>
+					
 				</ul>
 
 				<H2 name="components">Components</H2>
@@ -878,14 +874,14 @@ class Root extends View {
 						<thead>
 							<tr>
 								<th>#</th>
-								<for ${idx in 0...6}><th>Table heading</th></for>
+								<for ${_ in 0...6}><th>Table heading</th></for>
 							</tr>
 						</thead>
 						<tbody>
 							<for ${idx in 1...5}>
 								<tr>
 									<td>$idx</td>
-									<for ${idx in 0...6}><td>Table cell</td></for>
+									<for ${_ in 0...6}><td>Table cell</td></for>
 								</tr>
 							</for>
 						</tbody>
@@ -895,14 +891,14 @@ class Root extends View {
 							<thead>
 								<tr>
 									<th>#</th>
-									<for ${idx in 0...6}><th>Table heading</th></for>
+									<for ${_ in 0...6}><th>Table heading</th></for>
 								</tr>
 							</thead>
 							<tbody>
 								<for ${idx in 1...5}>
 									<tr>
 										<td>$idx</td>
-										<for ${idx in 0...6}><td>Table cell</td></for>
+										<for ${_ in 0...6}><td>Table cell</td></for>
 									</tr>
 								</for>
 							</tbody>
@@ -926,18 +922,9 @@ class Root extends View {
 		<div data-area=${attr.id} class="shadow p-3 border rounded p-4 my-3 mb-5 bg-white">${...attr.children}</div>
 	';
 
-	static final PRE = css('
-		tab-size: 2;
-		white-space: pre-wrap;
-		background:#282c34;
-		 code {
-			color: rgb(197, 200, 198);
-		}
-	');
-
 	public static function codeExample(attr:{children:String}) {
 		var formattedCode:String = js.Syntax.code("window.formatCode({0})", attr.children);
-		return hxx('<pre class=${PRE.add("border rounded p-4 my-1 mb-3")}><code>${formattedCode}</code></pre>');
+		return hxx('<pre class=${Styles.pre.add("border rounded p-4 my-1 mb-3")}><code>${formattedCode}</code></pre>');
 	}
 
 	public static function H2(attr:{?name:String, children:String}) '
@@ -955,4 +942,27 @@ class Root extends View {
 	public static function Blockquote(attr:{?name:String, children:Children}) '
 		<div class="p-3 mb-2 bg-light text-dark border border-info rounded">${...attr.children}</div>
 	';
+}
+
+class Styles {
+	public static final navColumn = css('
+		@media (min-width: 924px) {
+			min-height: 100%;
+			background: #f00;
+		}
+		@media (max-width: 924px) {
+			min-height: 100%;
+			background: #ff0;
+		}
+	');
+
+	public static final pre = css('
+		tab-size: 2;
+		white-space: pre-wrap;
+		background:#282c34;
+		 code {
+			color: rgb(197, 200, 198);
+		}
+	');
+
 }

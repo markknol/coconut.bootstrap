@@ -8,10 +8,13 @@ class Container extends View {
 
 	@:attribute var children:Children;
 	@:attribute var className:ClassName = null;
+	@:attribute var size:Size = null;
 	@:attribute var fluid:Bool = false;
 
 	function render() '
-		<div class=${className.add(['$prefix' => true, '$prefix-fluid' => fluid])}>${...children}</div>
+		<div class=${className.add(['$prefix' => !fluid && size == null, '$prefix-fluid' => fluid, '$prefix-$size' => size != null])}>
+			${...children}
+		</div>
 	';
 }
 
@@ -34,6 +37,8 @@ class Col extends View {
 	@:attribute var className:ClassName = null;
 
 	function render() '
-		<div class=${className.add(['$prefix' => true, 'noGutters' => noGutters])}>${...children}</div>
+		<div class=${className.add(['$prefix' => true, 'noGutters' => noGutters])}>
+			${...children}
+		</div>
 	';
 }

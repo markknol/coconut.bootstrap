@@ -12,39 +12,25 @@ class Nav extends View {
 	@:attribute var vertical:Bool = false;
 
 	@:attribute var asNav:Bool = false;
-	
+
 	@:attribute function items(tags:NavTags):Children;
 
 	static var navListTags:NavTags = {
 		item: function(attr) '
 			<li class=${attr.className.add('$prefix-item')}>
-				<a href=${attr.url} class=${[
-					'$prefix-link' => true, 
-					'disabled' => attr.disabled, 
-					'active' => attr.active,
-				]} aria-disabled=${attr.disabled}>${...attr.children}</a>
+				<a href=${attr.url} class=${['$prefix-link' => true, 'disabled' => attr.disabled, 'active' => attr.active,]} aria-disabled=${attr.disabled}>${...attr.children}</a>
 			</li>
 		',
 	}
 
 	static var navItemTags:NavTags = {
 		item: function(attr) '
-			<a href=${attr.url} class=${attr.className.add([
-				'$prefix-link' => true, 
-				'disabled' => attr.disabled, 
-				'active' => attr.active,
-			])} aria-disabled=${attr.disabled}>${...attr.children}</a>
+			<a href=${attr.url} class=${attr.className.add(['$prefix-link' => true, 'disabled' => attr.disabled, 'active' => attr.active,])} aria-disabled=${attr.disabled}>${...attr.children}</a>
 		',
 	}
 
 	function render() '
-		<let className=${className.add([
-			'$prefix' => true,
-			'$prefix-$type' => true,
-			'$prefix-fill' => fill,
-			'$prefix-justified' => justified,
-			'flex-column' => vertical,
-		])}>
+		<let className=${className.add(['$prefix' => true, '$prefix-$type' => true, '$prefix-fill' => fill, '$prefix-justified' => justified, 'flex-column' => vertical,])}>
 			<if ${asNav}>
 				<nav class=${className} role="navigation">
 					${...items(navItemTags)}

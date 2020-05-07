@@ -11,18 +11,14 @@ class Spinner extends View {
 	@:attribute var small:Bool = false;
 
 	function render() '
-		<span role="status" class=${className.add([
-			'$prefix-$type' => true,
-			'$prefix-$type-sm' => small,
-			'text-$variant' => variant != null, 
-		])} 
+		<span role="status" class=${className.add(['$prefix-$type' => true, '$prefix-$type-sm' => small, 'text-$variant' => variant != null,])} 
 		>
 			<span className="sr-only">${children}</span>
 		</span>
 	';
 }
 
-enum abstract SpinnerType(String) to String  {
+enum abstract SpinnerType(String) to String {
 	var Grow = 'grow';
 	var Border = 'border';
 }

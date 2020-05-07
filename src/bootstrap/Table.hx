@@ -14,17 +14,8 @@ class Table extends View {
 	@:attribute var responsive:Size = null;
 
 	function render() '
-		<div class=${[
-			'$prefix-responsive-$responsive' => responsive != null
-		]}>
-			<table class=${className.add([
-				'$prefix' => true, 
-				'$prefix-striped' => striped,
-				'$prefix-bordered' => bordered,
-				'$prefix-sm' => small,
-				'$prefix-hover' => hover,
-				'$prefix-dark' => dark,
-			])}>
+		<div class=${['$prefix-responsive-$responsive' => responsive != null]}>
+			<table class=${className.add(['$prefix' => true, '$prefix-striped' => striped, '$prefix-bordered' => bordered, '$prefix-sm' => small, '$prefix-hover' => hover, '$prefix-dark' => dark,])}>
 				${...children}
 			</table>
 		</div>
