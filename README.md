@@ -1,6 +1,6 @@
 # Bootstrap for Haxe/Coconut.ui
 
-![Build project](https://github.com/markknol/coconut.bootstrap/workflows/Build%20project/badge.svg)
+[![Build project](https://github.com/markknol/coconut.bootstrap/workflows/Build%20project/badge.svg)](https://github.com/markknol/coconut.bootstrap/actions)
 
 **Coconut-Bootstrap is a complete re-implementation of the Bootstrap components using `coconut.ui`. It has no dependency on either bootstrap.js or jQuery. If you have `coconut.vdom` setup and `coconut.bootstrap` installed, you have everything you need.**
 
