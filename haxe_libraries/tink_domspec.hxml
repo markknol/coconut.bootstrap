@@ -1,5 +1,5 @@
-# @install: lix --silent download "gh://github.com/haxetink/tink_domspec#880ae41ff4c346db4a7da567e74d360e8e31f14a" into tink_domspec/0.2.0/github/880ae41ff4c346db4a7da567e74d360e8e31f14a
+# @install: lix --silent download "gh://github.com/haxetink/tink_domspec#30442a04705435fb1c12c02353347a48df6570db" into tink_domspec/0.3.0/github/30442a04705435fb1c12c02353347a48df6570db
 -lib tink_macro
 -lib tink_svgspec
--cp ${HAXE_LIBCACHE}/tink_domspec/0.2.0/github/880ae41ff4c346db4a7da567e74d360e8e31f14a/src
--D tink_domspec=0.2.0
+-cp ${HAXE_LIBCACHE}/tink_domspec/0.3.0/github/30442a04705435fb1c12c02353347a48df6570db/src
+-D tink_domspec=0.3.0
