@@ -1,4 +1,4 @@
-# Bootstrap for Haxe/Coconut.ui
+# Bootstrap for Haxe / Coconut.ui
 
 [![Build project](https://github.com/markknol/coconut.bootstrap/workflows/Build%20project/badge.svg)](https://github.com/markknol/coconut.bootstrap/actions)
 
